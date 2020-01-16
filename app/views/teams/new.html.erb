@@ -1,0 +1,25 @@
+<h3>Create a new team:</h3> 
+
+<%= form_for @team do |f| %>
+
+	<%= f.label :name, "Team name"%>
+	<%= f.text_field :name %>
+	<br>
+
+	<%= f.label :acronym, "Team acronym"%>
+	<%= f.text_field :acronym %>
+	<br>
+
+	<%= f.label :city, "Team city"%>
+	<%= f.text_field :city %>
+	<br>
+
+	<%= f.label :light_color, "Team color"%>
+	<%= f.text_field :light_color %>
+	<br><br>
+
+	<%= f.submit "Create team"%>
+
+<% end %>
+<br>
+<%= link_to "Dismiss", teams_path %>
