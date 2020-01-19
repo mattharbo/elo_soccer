@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   resources :teams
   resources :fixtures
 
-  root to: 'teams#index'
+  root to: 'fixtures#index'
 end

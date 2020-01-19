@@ -1,6 +1,6 @@
-<h3>Here is the list of teams:</h3> 
+<%= link_to "Home", root_path %>
 
-<%= link_to "Add a new team", new_team_path%><br><br>
+<h3>Here is the list of teams:</h3> 
 
 <% @teams.each do | team | %>
 	<b><%= team.name %></b>
@@ -11,3 +11,8 @@
 	 • 
 	<%= team.light_color %><br>
 <% end %>
+
+<br>
+<%= link_to "Add a new team", new_team_path%>
+<br>
+<%= link_to "Back to list of games", fixtures_path%>

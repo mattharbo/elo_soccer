@@ -1,0 +1,30 @@
+<h3>Create a new game:</h3>
+
+<%= form_for @fixture do |f| %>
+
+	<%= f.label :date, "Date of the game"%>
+	<%= f.date_field :date, min: Date.today, value:Date.today %>
+	<br>
+
+	<%= f.label :time, "Time of the game"%>
+	<%= f.time_field :time, value: "21:00" %>
+	<br>
+
+	<%= f.label :home_team, "Home team"%>
+	<%= select_tag(:home_team, options_for_select(@teams)) %>
+
+	<%= f.label :away_team, "Away team"%>
+	<%= select_tag(:away_team, options_for_select(@teams)) %>
+	
+	<br>
+
+	<br>
+	<%= f.submit "Create game"%>
+
+<% end %>
+
+<%= link_to "Dismiss", fixtures_path %>
+
+<!-- Set by default: -->
+<!-- Status = no started -->
+<!-- Completed = false  -->

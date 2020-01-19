@@ -1,9 +1,17 @@
 <h3>Here is the list of all fixtures in DB</h3>
 
 <% @fixtures.each do |fixture| %>
-
-	<%= fixture.home_team.name%>
-	 vs. 
-	<%= fixture.away_team.name%>
+	• 
+	<%= link_to fixture_path(fixture.id), {class: "classname"} do%>
+		<%= fixture.home_team.name %>
+		 vs. 
+		<%= fixture.away_team.name %>
+	<%end%>
+	<br>
 
 <% end %>
+
+<br>
+<%= link_to "Create a new game", new_fixture_path %>
+<br>
+<%= link_to "Access to team listing", teams_path %>
