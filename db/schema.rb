@@ -10,23 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_18_222243) do
+ActiveRecord::Schema.define(version: 2020_01_19_140909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "fixtures", force: :cascade do |t|
-    t.bigint "home_team_id"
-    t.bigint "away_team_id"
-    t.integer "score_home"
-    t.integer "score_away"
-    t.boolean "completed"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "status"
     t.date "date"
     t.time "time"
+    t.bigint "home_team_id"
+    t.bigint "away_team_id"
+    t.integer "scorehome"
+    t.integer "scoreaway"
     t.integer "stage"
+    t.boolean "completed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["away_team_id"], name: "index_fixtures_on_away_team_id"
     t.index ["home_team_id"], name: "index_fixtures_on_home_team_id"
   end
