@@ -6077,3 +6077,219 @@ Processing by FixturesController#index as HTML
 Completed 200 OK in 37ms (Views: 32.2ms | ActiveRecord: 1.6ms)
 
 
+Started GET "/fixtures" for ::1 at 2020-01-19 20:43:27 +0100
+Processing by FixturesController#index as HTML
+  Rendering fixtures/index.html.erb within layouts/application
+  [1m[36mFixture Load (35.7ms)[0m  [1m[34mSELECT "fixtures".* FROM "fixtures"[0m
+  ↳ app/views/fixtures/index.html.erb:3
+  [1m[36mTeam Load (37.0ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:6
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:8
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:6
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:8
+  Rendered fixtures/index.html.erb within layouts/application (180.6ms)
+Completed 200 OK in 309ms (Views: 213.5ms | ActiveRecord: 74.2ms)
+
+
+Started GET "/fixtures" for ::1 at 2020-01-19 20:44:38 +0100
+Processing by FixturesController#index as HTML
+  Rendering fixtures/index.html.erb within layouts/application
+  [1m[36mFixture Load (0.5ms)[0m  [1m[34mSELECT "fixtures".* FROM "fixtures"[0m
+  ↳ app/views/fixtures/index.html.erb:3
+  Rendered fixtures/index.html.erb within layouts/application (114.2ms)
+Completed 500 Internal Server Error in 130ms (ActiveRecord: 83.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `date' for nil:NilClass):
+    2: 
+    3: <% @fixtures.each do |fixture| %>
+    4: 	• 
+    5: 	<%= @fixture.date %> @ <%= @fixture.time.strftime("%H:%M") %> | 
+    6: 	<%= link_to fixture_path(fixture.id), {class: "classname"} do%>
+    7: 		<%= fixture.home_team.name %>
+    8: 		 vs. 
+  
+app/views/fixtures/index.html.erb:5:in `block in _app_views_fixtures_index_html_erb___1608104133207263839_70348259789360'
+app/views/fixtures/index.html.erb:3:in `_app_views_fixtures_index_html_erb___1608104133207263839_70348259789360'
+  [1m[36mFixture Load (0.7ms)[0m  [1m[34mSELECT  "fixtures".* FROM "fixtures" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/fixtures" for ::1 at 2020-01-19 20:45:32 +0100
+Processing by FixturesController#index as HTML
+  Rendering fixtures/index.html.erb within layouts/application
+  [1m[36mFixture Load (0.7ms)[0m  [1m[34mSELECT "fixtures".* FROM "fixtures"[0m
+  ↳ app/views/fixtures/index.html.erb:3
+  [1m[36mTeam Load (1.1ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:7
+  [1m[36mTeam Load (11.1ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:9
+  [1m[36mTeam Load (0.8ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:7
+  [1m[36mTeam Load (1.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:9
+  Rendered fixtures/index.html.erb within layouts/application (195.0ms)
+Completed 200 OK in 348ms (Views: 306.0ms | ActiveRecord: 20.8ms)
+
+
+Started GET "/fixtures" for ::1 at 2020-01-19 20:46:15 +0100
+Processing by FixturesController#index as HTML
+  Rendering fixtures/index.html.erb within layouts/application
+  [1m[36mFixture Load (0.6ms)[0m  [1m[34mSELECT "fixtures".* FROM "fixtures"[0m
+  ↳ app/views/fixtures/index.html.erb:3
+  Rendered fixtures/index.html.erb within layouts/application (23.7ms)
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `complete' for #<Fixture:0x00007ff676664328>
+Did you mean?  completed
+               completed=
+               completed?):
+    2: 
+    3: <% @fixtures.each do |fixture| %>
+    4: 	• 
+    5: 	<%= fixture.complete %>
+    6: 	<%= fixture.date %> @ <%= fixture.time.strftime("%H:%M") %> | 
+    7: 	<%= link_to fixture_path(fixture.id), {class: "classname"} do%>
+    8: 		<%= fixture.home_team.name %>
+  
+app/views/fixtures/index.html.erb:5:in `block in _app_views_fixtures_index_html_erb___1608104133207263839_70348266928320'
+app/views/fixtures/index.html.erb:3:in `_app_views_fixtures_index_html_erb___1608104133207263839_70348266928320'
+Started GET "/fixtures" for ::1 at 2020-01-19 20:46:24 +0100
+Processing by FixturesController#index as HTML
+  Rendering fixtures/index.html.erb within layouts/application
+  [1m[36mFixture Load (0.4ms)[0m  [1m[34mSELECT "fixtures".* FROM "fixtures"[0m
+  ↳ app/views/fixtures/index.html.erb:3
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:8
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:10
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:8
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:10
+  Rendered fixtures/index.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 61ms (Views: 55.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/fixtures" for ::1 at 2020-01-19 20:48:07 +0100
+Processing by FixturesController#index as HTML
+  Rendering fixtures/index.html.erb within layouts/application
+  [1m[36mFixture Load (1.8ms)[0m  [1m[34mSELECT "fixtures".* FROM "fixtures"[0m
+  ↳ app/views/fixtures/index.html.erb:3
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:14
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:16
+  [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:14
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:16
+  Rendered fixtures/index.html.erb within layouts/application (44.4ms)
+Completed 200 OK in 126ms (Views: 112.3ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/fixtures" for ::1 at 2020-01-19 20:50:22 +0100
+Processing by FixturesController#index as HTML
+  Rendering fixtures/index.html.erb within layouts/application
+  [1m[36mFixture Load (1.0ms)[0m  [1m[34mSELECT "fixtures".* FROM "fixtures"[0m
+  ↳ app/views/fixtures/index.html.erb:3
+  [1m[36mTeam Load (0.9ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:14
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:16
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:14
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:16
+  Rendered fixtures/index.html.erb within layouts/application (39.7ms)
+Completed 200 OK in 123ms (Views: 111.6ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/fixtures" for ::1 at 2020-01-19 20:51:07 +0100
+Processing by FixturesController#index as HTML
+  Rendering fixtures/index.html.erb within layouts/application
+  [1m[36mFixture Load (0.5ms)[0m  [1m[34mSELECT "fixtures".* FROM "fixtures"[0m
+  ↳ app/views/fixtures/index.html.erb:3
+  [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:14
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:16
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:14
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:16
+  Rendered fixtures/index.html.erb within layouts/application (17.8ms)
+Completed 200 OK in 107ms (Views: 101.6ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/fixtures" for ::1 at 2020-01-19 20:51:37 +0100
+Processing by FixturesController#index as HTML
+  Rendering fixtures/index.html.erb within layouts/application
+  [1m[36mFixture Load (0.4ms)[0m  [1m[34mSELECT "fixtures".* FROM "fixtures"[0m
+  ↳ app/views/fixtures/index.html.erb:3
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:7
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:9
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:7
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:9
+  Rendered fixtures/index.html.erb within layouts/application (11.2ms)
+Completed 200 OK in 58ms (Views: 50.6ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/fixtures" for ::1 at 2020-01-19 20:51:45 +0100
+Processing by FixturesController#index as HTML
+  Rendering fixtures/index.html.erb within layouts/application
+  [1m[36mFixture Load (0.4ms)[0m  [1m[34mSELECT "fixtures".* FROM "fixtures"[0m
+  ↳ app/views/fixtures/index.html.erb:3
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:7
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:9
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:7
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:9
+  Rendered fixtures/index.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 38ms (Views: 34.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/fixtures" for ::1 at 2020-01-19 20:51:57 +0100
+Processing by FixturesController#index as HTML
+  Rendering fixtures/index.html.erb within layouts/application
+  [1m[36mFixture Load (0.6ms)[0m  [1m[34mSELECT "fixtures".* FROM "fixtures"[0m
+  ↳ app/views/fixtures/index.html.erb:3
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:7
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:9
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:7
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:9
+  Rendered fixtures/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 46ms (Views: 42.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/fixtures" for ::1 at 2020-01-19 20:52:14 +0100
+Processing by FixturesController#index as HTML
+  Rendering fixtures/index.html.erb within layouts/application
+  [1m[36mFixture Load (0.4ms)[0m  [1m[34mSELECT "fixtures".* FROM "fixtures"[0m
+  ↳ app/views/fixtures/index.html.erb:3
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:12
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:14
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:12
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/fixtures/index.html.erb:14
+  Rendered fixtures/index.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 48ms (Views: 44.8ms | ActiveRecord: 1.3ms)
+
+

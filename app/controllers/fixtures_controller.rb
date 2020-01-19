@@ -1,7 +1,6 @@
 class FixturesController < ApplicationController
 	def index
 		@fixtures = Fixture.all
-		# raise
 	end
 
 	def new

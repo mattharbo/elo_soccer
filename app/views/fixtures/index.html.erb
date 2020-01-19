@@ -2,13 +2,18 @@
 
 <% @fixtures.each do |fixture| %>
 	• 
+	<% if fixture.completed.nil? %>
+		<i> Not updated</i> &#x26D4
+	<% else %>
+		 &#x2705
+	<% end %>
+	<%= fixture.date %> @ <%= fixture.time.strftime("%H:%M") %> | 
 	<%= link_to fixture_path(fixture.id), {class: "classname"} do%>
 		<%= fixture.home_team.name %>
 		 vs. 
-		<%= fixture.away_team.name %>
+		<%= fixture.away_team.name %> 
 	<%end%>
 	<br>
-
 <% end %>
 
 <br>
