@@ -26,6 +26,17 @@ class FixturesController < ApplicationController
 		@fixture = Fixture.find(params[:id])
 	end
 
+	def tocomplete
+		@fixturetocomplete = Fixture.where(completed:nil)
+	end
+
+	def edit
+		@fixture = Fixture.find(params[:id])
+	end
+
+	####################
+	### Private methods started from here !!
+	####################
 	private
 
 	def fixture_params

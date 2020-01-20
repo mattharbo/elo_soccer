@@ -12,6 +12,10 @@ class TeamsController < ApplicationController
 		redirect_to teams_path
 	end
 
+	####################
+	### Private methods started from here !!
+	####################
+
 	private
 
 	def team_params

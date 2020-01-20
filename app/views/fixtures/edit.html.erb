@@ -1,0 +1,25 @@
+<%= link_to "Home", root_path %>
+
+<h3>Game ID in Database <%= @fixture.id %>: </h3>
+
+<%= form_for @fixture do |f| %>
+
+	<h3>
+		<%= f.label :scorehome, @fixture.home_team.name %>
+		<%= f.text_field :scorehome %>
+	</h3>
+
+	<h3>
+		<%= f.label :scoreaway, @fixture.away_team.name %>
+		<%= f.text_field :scoreaway %>
+	</h3>
+
+	<%= @fixture.date %> @ <%= @fixture.time.strftime("%H:%M") %>
+
+	<br><br>
+	<%= f.submit "Update result"%>
+
+<% end %>
+
+<br>
+<%= link_to "Dismiss", tocomplete_fixtures_path %>
