@@ -34,12 +34,19 @@ class FixturesController < ApplicationController
 		@fixture = Fixture.find(params[:id])
 	end
 
+	def update
+		@fixturetoupdate = Fixture.find(params[:id])
+		@fixturetoupdate.completed = true
+		@fixturetoupdate.update(fixture_params)
+		redirect_to fixtures_path
+	end
+
 	####################
 	### Private methods started from here !!
 	####################
 	private
 
 	def fixture_params
-		params.require(:fixture).permit(:date, :time, :home_team, :away_team)
+		params.require(:fixture).permit(:date, :time, :home_team, :away_team, :scorehome, :scoreaway)
 	end
 end
