@@ -1,10 +1,18 @@
-<%= link_to "Home", root_path %>
-
 <h3>Game ID in Database <%= @fixture.id %>: </h3>
 
 <h1>
 	<%= @fixture.home_team.name %>
-	vs.
+
+	<% unless @fixture.scorehome.nil? %>
+		<%= @fixture.scorehome %>
+	<% end %>
+
+	-
+
+	<% unless @fixture.scoreaway.nil? %>
+		<%= @fixture.scoreaway %>
+	<% end %>
+
 	<%= @fixture.away_team.name %>
 </h1>
 

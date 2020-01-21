@@ -1,10 +1,14 @@
 <h3>Games to complete:</h3>
 
-<% @fixturetocomplete.each do |game| %>
-	<%= link_to edit_fixture_path(game.id), {class: "classname"} do%>
-		<%= game.home_team.name %>
-		 vs. 
-		<%= game.away_team.name %> 
-	<%end%>
-	<br>
+<% if @fixturetocomplete.empty? %>
+	<i>No game without score in DB &#x1F389</i>
+<% else %>
+	<% @fixturetocomplete.each do |game| %>
+		<%= link_to edit_fixture_path(game.id), {class: "classname"} do%>
+			<%= game.home_team.name %>
+			 vs. 
+			<%= game.away_team.name %> 
+		<%end%>
+		<br>
+	<% end %>
 <% end %>
