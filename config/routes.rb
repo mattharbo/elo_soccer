@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :teams
   resources :fixtures do
   	collection do
-  		get 'tocomplete' => 'fixtures#tocomplete'
+  		get 'to_complete' => 'fixtures#tocomplete'
   	end
   end	
 end

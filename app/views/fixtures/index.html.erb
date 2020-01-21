@@ -4,16 +4,23 @@
 	• 
 	<% if fixture.completed.nil? %>
 		<i> Not updated</i> &#x26D4
+		<%= fixture.date %> at <%= fixture.time.strftime("%H:%M") %> | 
+		<%= link_to fixture_path(fixture.id), {class: "classname"} do%>
+			<%= fixture.home_team.name %>
+			 vs. 
+			<%= fixture.away_team.name %> 
+		<%end%>
+		<br>
 	<% else %>
-		 &#x2705
+		&#x2705
+		<%= fixture.date %> | 
+		<%= link_to fixture_path(fixture.id), {class: "classname"} do%>
+			<%= fixture.home_team.name %>
+			<b><%= fixture.scorehome %>-<%= fixture.scoreaway %></b>
+			<%= fixture.away_team.name %> 
+		<%end%>
+		<br>
 	<% end %>
-	<%= fixture.date %> @ <%= fixture.time.strftime("%H:%M") %> | 
-	<%= link_to fixture_path(fixture.id), {class: "classname"} do%>
-		<%= fixture.home_team.name %>
-		 vs. 
-		<%= fixture.away_team.name %> 
-	<%end%>
-	<br>
 <% end %>
 
 <br>

@@ -1,12 +1,10 @@
 <h3>Here is the list of teams:</h3> 
 
 <% @teams.each do | team | %>
-	<b><%= team.name %></b>
-	 || 
-	<%= team.acronym %>
-	 • 
+	<b><%= team.name %></b> 
+	(<%= team.acronym %>) | 
 	<%= team.city %>
-	 • 
+	 - 
 	<%= team.light_color %><br>
 <% end %>
 

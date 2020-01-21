@@ -27,7 +27,7 @@ class FixturesController < ApplicationController
 	end
 
 	def tocomplete
-		@fixturetocomplete = Fixture.where(completed:nil).order(date: :asc)
+		@fixturetocomplete = Fixture.where("DATE(date) <= ?", Date.today).where(completed:nil).order(date: :asc)
 	end
 
 	def edit

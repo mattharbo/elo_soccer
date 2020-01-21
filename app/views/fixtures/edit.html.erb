@@ -12,7 +12,7 @@
 		<%= f.text_field :scoreaway %>
 	</h3>
 
-	<%= @fixture.date %> @ <%= @fixture.time.strftime("%H:%M") %>
+	was played on <%= @fixture.date %> at <%= @fixture.time.strftime("%H:%M") %>
 
 	<br><br>
 	<%= f.submit "Update result"%>
@@ -20,4 +20,4 @@
 <% end %>
 
 <br>
-<%= link_to "Dismiss", tocomplete_fixtures_path %>
+<%= link_to "Dismiss", to_complete_fixtures_path %>
