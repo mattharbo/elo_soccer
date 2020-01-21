@@ -1,6 +1,6 @@
 class FixturesController < ApplicationController
 	def index
-		@fixtures = Fixture.all.order(date: :asc).limit(11)
+		@fixtures = Fixture.all.order(date: :asc)
 	end
 
 	def new
@@ -27,7 +27,7 @@ class FixturesController < ApplicationController
 	end
 
 	def tocomplete
-		@fixturetocomplete = Fixture.where(completed:nil).order(date: :asc).limit(11)
+		@fixturetocomplete = Fixture.where(completed:nil).order(date: :asc)
 	end
 
 	def edit
