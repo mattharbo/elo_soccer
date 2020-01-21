@@ -1,24 +1,22 @@
-<h3>Game ID in Database <%= @fixture.id %>: </h3>
+<center>
+	<h1>
+		<%= @fixture.home_team.name %>
 
-<h1>
-	<%= @fixture.home_team.name %>
+		<% unless @fixture.scorehome.nil? %>
+			<%= @fixture.scorehome %>
+		<% end %>
 
-	<% unless @fixture.scorehome.nil? %>
-		<%= @fixture.scorehome %>
-	<% end %>
+		-
 
-	-
+		<% unless @fixture.scoreaway.nil? %>
+			<%= @fixture.scoreaway %>
+		<% end %>
 
-	<% unless @fixture.scoreaway.nil? %>
-		<%= @fixture.scoreaway %>
-	<% end %>
-
-	<%= @fixture.away_team.name %>
-</h1>
-
-
+		<%= @fixture.away_team.name %>
+	</h1>
+Played on 
 <%= @fixture.date %> at <%= @fixture.time.strftime("%H:%M") %>
-
+</center>
 
 <br><br>
 <%= link_to "Back to game list", fixtures_path%>
