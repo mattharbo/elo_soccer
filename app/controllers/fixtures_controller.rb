@@ -6,9 +6,9 @@ class FixturesController < ApplicationController
 	def new
 		@fixture = Fixture.new
 		
-		teams_for_array = Team.all
+		teams_for_array = Team.all.order(city: :asc)
 		@teams = teams_for_array.map do |d|
-			[d.name, d.id]
+			[d.city, d.id]
 		end
 	end
 
