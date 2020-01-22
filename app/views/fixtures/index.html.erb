@@ -11,7 +11,7 @@
 			&#x2705 <!-- Checked icon -->
 		<% end %>
 
-		<%= fixture.date %> | 
+		<%= fixture.date %> • Stage <%= fixture.stage %> | 
 			<%= link_to fixture_path(fixture.id), {class: "classname"} do%>
 				<%= fixture.home_team.name %>
 				<b><%= fixture.scorehome %>-<%= fixture.scoreaway %></b>
@@ -23,7 +23,8 @@
 	
 		&#x1F5D3 <!-- Calendar icon -->
 
-		<%= fixture.date %> at <%= fixture.time.strftime("%H:%M") %> | 
+		<%= fixture.date %> at <%= fixture.time.strftime("%H:%M") %>
+		• Stage <%= fixture.stage %> | 
 		<%= link_to fixture_path(fixture.id), {class: "classname"} do%>
 			<%= fixture.home_team.name %>
 			 vs.
