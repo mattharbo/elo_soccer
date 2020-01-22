@@ -9,6 +9,9 @@
 	<%= f.label :time, "Time of the game"%>
 	<%= f.time_field :time, value: "21:00" %>
 	<br>
+	<%= f.label :stage, "Stage"%>
+	<%= select_tag(:stage, options_for_select(@stages)) %>
+	<br>
 
 	<%= f.label :home_team, "Home team"%>
 	<%= select_tag(:home_team, options_for_select(@teams)) %>
@@ -23,8 +26,9 @@
 
 <% end %>
 
+<br>
 <%= link_to "Dismiss", fixtures_path %>
 
 <!-- Set by default: -->
-<!-- Status = no started -->
+<!-- Status = scheduled -->
 <!-- Completed = false  -->

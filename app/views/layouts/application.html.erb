@@ -11,6 +11,12 @@
 
   <body>
     <%= link_to "Home", root_path %>
+     - 
+    <%= link_to "Teams", teams_path %>
+     - 
+    <%= link_to "Fixtures", fixtures_path %>
+     - 
+    (<%= link_to "Reports", to_complete_fixtures_path %>)
     <%= yield %>
   </body>
 </html>
