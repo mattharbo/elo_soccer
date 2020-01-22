@@ -14,10 +14,17 @@ class FixturesController < ApplicationController
 
 	def create
 		date = params[:fixture][:date]
+
+		if Date.parse(date) < Date.today 
+			status = "played"
+		else
+			status = "scheduled"
+		end
+
 		time = params[:fixture][:time]
 		home_t = Team.find(params[:home_team].to_i)
 		away_t = Team.find(params[:away_team].to_i)
-		Fixture.create(date:date,time:time,home_team:home_t,away_team:away_t)
+		Fixture.create(date:date,time:time,home_team:home_t,away_team:away_t,status:status)
 
 		redirect_to fixtures_path
 	end
@@ -47,6 +54,6 @@ class FixturesController < ApplicationController
 	private
 
 	def fixture_params
-		params.require(:fixture).permit(:date, :time, :home_team, :away_team, :scorehome, :scoreaway)
+		params.require(:fixture).permit(:date, :time, :home_team, :away_team, :scorehome, :scoreaway, :status)
 	end
 end
