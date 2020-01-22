@@ -1,7 +1,9 @@
 <h3>Here is the list of all fixtures in DB</h3>
 
-<% @fixtures.each do |fixture| %>
+<%= link_to "Create a new game", new_fixture_path %>
+<br><br>
 
+<% @fixtures.each do |fixture| %>
 
 	<% if fixture.status.eql? 'played' %>
 
@@ -33,10 +35,5 @@
 		<br>
 
 	<% end %>
-
-
 	
 <% end %>
-
-<br>
-<%= link_to "Create a new game", new_fixture_path %>
