@@ -14,14 +14,18 @@ class FixturesController < ApplicationController
 
 	def create
 		date = params[:fixture][:date]
+		time = params[:fixture][:time]
 
-		if Date.parse(date) < Date.today 
-			status = "played"
+		if Date.parse(date) <= Date.today
+			if (time.to_time - Time.now).abs < 11400
+				status = "played"
+			else
+				status = "scheduled"
+			end
 		else
 			status = "scheduled"
 		end
-
-		time = params[:fixture][:time]
+		
 		home_t = Team.find(params[:home_team].to_i)
 		away_t = Team.find(params[:away_team].to_i)
 		Fixture.create(date:date,time:time,home_team:home_t,away_team:away_t,status:status)

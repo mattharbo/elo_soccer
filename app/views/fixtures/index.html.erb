@@ -1,26 +1,40 @@
 <h3>Here is the list of all fixtures in DB</h3>
 
 <% @fixtures.each do |fixture| %>
-	• 
-	<% if fixture.completed.nil? %>
-		<i> Not updated</i> &#x26D4
+
+
+	<% if fixture.status.eql? 'played' %>
+
+		<% if fixture.completed.nil? %>
+			&#x26D4 <!-- Forbidden icon -->
+		<% else %>
+			&#x2705 <!-- Checked icon -->
+		<% end %>
+
+		<%= fixture.date %> | 
+			<%= link_to fixture_path(fixture.id), {class: "classname"} do%>
+				<%= fixture.home_team.name %>
+				<b><%= fixture.scorehome %>-<%= fixture.scoreaway %></b>
+				<%= fixture.away_team.name %> 
+			<%end%>
+		<br>
+
+	<% else %>
+	
+		&#x1F5D3 <!-- Calendar icon -->
+
 		<%= fixture.date %> at <%= fixture.time.strftime("%H:%M") %> | 
 		<%= link_to fixture_path(fixture.id), {class: "classname"} do%>
 			<%= fixture.home_team.name %>
-			 vs. 
+			 vs.
 			<%= fixture.away_team.name %> 
 		<%end%>
 		<br>
-	<% else %>
-		&#x2705
-		<%= fixture.date %> | 
-		<%= link_to fixture_path(fixture.id), {class: "classname"} do%>
-			<%= fixture.home_team.name %>
-			<b><%= fixture.scorehome %>-<%= fixture.scoreaway %></b>
-			<%= fixture.away_team.name %> 
-		<%end%>
-		<br>
+
 	<% end %>
+
+
+	
 <% end %>
 
 <br>
