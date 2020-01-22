@@ -1,6 +1,6 @@
 class FixturesController < ApplicationController
 	def index
-		@fixtures = Fixture.all.order(date: :asc)
+		@fixtures = Fixture.all.order(date: :desc)
 	end
 
 	def new
