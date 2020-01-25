@@ -18550,3 +18550,64 @@ Processing by FixturesController#index as HTML
 Completed 200 OK in 47ms (Views: 41.3ms | ActiveRecord: 3.1ms)
 
 
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mFixture Load (5.1ms)[0m  [1m[34mSELECT  "fixtures".* FROM "fixtures" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7045273633535244975)[0m
+  ↳ /Users/matthieuharbonnier/.rbenv/versions/2.5.1/bin/rake:23
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/matthieuharbonnier/.rbenv/versions/2.5.1/bin/rake:23
+Migrating to CreateRankings (20200124191001)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/matthieuharbonnier/.rbenv/versions/2.5.1/bin/rake:23
+  [1m[35m (96.4ms)[0m  [1m[35mCREATE TABLE "rankings" ("id" bigserial primary key, "team_id" bigint, "fixture_id" bigint, "score" float, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_90bb2a3665"
+FOREIGN KEY ("team_id")
+  REFERENCES "teams" ("id")
+, CONSTRAINT "fk_rails_9a20d3ef41"
+FOREIGN KEY ("fixture_id")
+  REFERENCES "fixtures" ("id")
+)[0m
+  ↳ db/migrate/20200124191001_create_rankings.rb:3
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_rankings_on_team_id" ON "rankings"  ("team_id")[0m
+  ↳ db/migrate/20200124191001_create_rankings.rb:3
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_rankings_on_fixture_id" ON "rankings"  ("fixture_id")[0m
+  ↳ db/migrate/20200124191001_create_rankings.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (2.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200124191001"]]
+  ↳ /Users/matthieuharbonnier/.rbenv/versions/2.5.1/bin/rake:23
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/matthieuharbonnier/.rbenv/versions/2.5.1/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (43.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/matthieuharbonnier/.rbenv/versions/2.5.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/matthieuharbonnier/.rbenv/versions/2.5.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/matthieuharbonnier/.rbenv/versions/2.5.1/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7045273633535244975)[0m
+  ↳ /Users/matthieuharbonnier/.rbenv/versions/2.5.1/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/matthieuharbonnier/.rbenv/versions/2.5.1/bin/rake:23
+  [1m[36mRanking Load (0.7ms)[0m  [1m[34mSELECT  "rankings".* FROM "rankings" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/matthieuharbonnier/.rbenv/versions/2.5.1/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/matthieuharbonnier/.rbenv/versions/2.5.1/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/matthieuharbonnier/.rbenv/versions/2.5.1/bin/rake:23
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7045273633535244975)[0m
+  ↳ /Users/matthieuharbonnier/.rbenv/versions/2.5.1/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/matthieuharbonnier/.rbenv/versions/2.5.1/bin/rake:23
+Migrating to CreateRankings (20200124191001)
+  [1m[35m (23.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/matthieuharbonnier/.rbenv/versions/2.5.1/bin/rake:23
+  [1m[35m (45.9ms)[0m  [1m[35mDROP TABLE "rankings"[0m
+  ↳ /Users/matthieuharbonnier/.rbenv/versions/2.5.1/bin/rake:23
+  [1m[36mActiveRecord::SchemaMigration Destroy (44.7ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20200124191001"]]
+  ↳ /Users/matthieuharbonnier/.rbenv/versions/2.5.1/bin/rake:23
+  [1m[35m (4.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/matthieuharbonnier/.rbenv/versions/2.5.1/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7045273633535244975)[0m
+  ↳ /Users/matthieuharbonnier/.rbenv/versions/2.5.1/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/matthieuharbonnier/.rbenv/versions/2.5.1/bin/rake:23
