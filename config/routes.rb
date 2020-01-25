@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   		get 'to_complete' => 'fixtures#tocomplete'
   	end
   end	
+  resources :ranks, only: [:index]
+  get 'init_ranks', to: 'ranks#initializeranking'
 end

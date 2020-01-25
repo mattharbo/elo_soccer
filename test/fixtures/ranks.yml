@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fixture: one
+  team: one
+  level: 1.5
+
+two:
+  fixture: two
+  team: two
+  level: 1.5

@@ -23,14 +23,17 @@ class FixturesController < ApplicationController
 		date = params[:fixture][:date]
 		time = params[:fixture][:time]
 
-		if Date.parse(date) <= Date.today
+		case 
+		when Date.parse(date) < Date.today
+			status = "played"
+		when Date.parse(date) > Date.today
+			status = "scheduled"
+		else #today's date
 			if (time.to_time - Time.now).abs < 11400
 				status = "played"
 			else
 				status = "scheduled"
 			end
-		else
-			status = "scheduled"
 		end
 		
 		home_t = Team.find(params[:home_team].to_i)
@@ -46,6 +49,7 @@ class FixturesController < ApplicationController
 	end
 
 	def tocomplete
+		# /!\ This query has to be improved taking "time" into account!
 		@fixturetocomplete = Fixture.where("DATE(date) <= ?", Date.today).where(completed:nil).order(date: :asc)
 	end
 
@@ -56,8 +60,9 @@ class FixturesController < ApplicationController
 	def update
 		@fixturetoupdate = Fixture.find(params[:id])
 		@fixturetoupdate.completed = true
+		@fixturetoupdate.status = "played" # /!\ Should be removed when status auto updated by CRON task
 		@fixturetoupdate.update(fixture_params)
-		redirect_to fixtures_path
+		redirect_to to_complete_fixtures_path
 	end
 
 	####################

@@ -4,7 +4,7 @@
 	<i>No game without score in DB &#x1F389</i>
 <% else %>
 	<% @fixturetocomplete.each do |game| %>
-		<%= game.date %> |
+		<%= game.date %> • <b>Stage <%= game.stage %></b> | 
 		<%= link_to edit_fixture_path(game.id), {class: "classname"} do%>
 			<%= game.home_team.name %>
 			 vs. 
