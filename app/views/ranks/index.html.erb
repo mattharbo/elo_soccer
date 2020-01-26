@@ -4,17 +4,19 @@
 	<%= link_to "Initialize the ranking", init_ranks_path %>
 <% end %>
 
-<% for i in @theranking do %>
-	<%= i[0] %>
-	<small>(<%= i[1] %>)</small>
-	<br>
-<% end %>
+<% unless @theranking.empty? %>
+	<% for i in @theranking do %>
+		<%= i[0] %>
+		<small>(<%= i[1] %>)</small>
+		<br>
+	<% end %>
 
-<br>
--------------------------
-<br>
-<% @ranks.each do |rank| %>
-	<%= rank.team.city %>
-	<%= rank.level %>
 	<br>
+	-------------------------
+	<br>
+	<% @ranks.each do |rank| %>
+		<%= rank.team.city %>
+		<%= rank.level %>
+		<br>
+	<% end %>
 <% end %>
