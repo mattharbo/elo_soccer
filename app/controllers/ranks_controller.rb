@@ -1,6 +1,6 @@
 class RanksController < ApplicationController
 	def index
-		@ranks = Rank.all
+		@ranks = []
 
 		ranking = []
 		teams = Team.all
