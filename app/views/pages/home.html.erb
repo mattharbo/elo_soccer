@@ -1,1 +1,20 @@
 <h1>Home page</h1>
+
+<center>
+	<% @games.each do |game| %>
+		<% if game[0] == "incomplete" %>
+			<small>(<%= (game[1]*100).round(2) %>%)</small>
+			<%= game[3] %>
+			 vs.
+			<%= game[4] %>
+			<small>(<%= (game[2]*100).round(2) %>%)</small>
+		<% else %>
+			<%= game[3] %>
+			<%= game[1] %>
+			 -
+			<%= game[2] %>
+			<%= game[4] %>
+		<% end %>
+		<br>
+	<% end %>
+</center>
