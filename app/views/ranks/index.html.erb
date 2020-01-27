@@ -1,8 +1,8 @@
 <h3>Here is the latest ranking</h3>
 
-<% if @ranks.empty? %>
+
 	<%= link_to "Initialize the ranking", init_ranks_path %>
-<% end %>
+
 
 <% unless @theranking.empty? %>
 	<% for i in @theranking do %>
