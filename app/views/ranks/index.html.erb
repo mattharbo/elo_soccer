@@ -1,6 +1,18 @@
 <h3>Here is the latest ranking</h3>
 
+<% unless @theranking.empty? %>
+	<% for i in @theranking do %>
+		<%= i[0] %>
+		<small>(<%= i[1] %>)</small>
+		<br>
+	<% end %>
 
-	<%= link_to "Initialize the ranking", init_ranks_path %>
-
-
+	<br>
+	-------------------------
+	<br>
+	<% @ranks.each do |rank| %>
+		<%= rank.team.city %>
+		<%= rank.level %>
+		<br>
+	<% end %>
+<% end %>
