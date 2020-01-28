@@ -16,8 +16,8 @@ class PagesController < ApplicationController
 				line << game.scoreaway
 			else
 				line << "incomplete"
-				line << win_rate(Rank.where(team:game.away_team).last.level,Rank.where(team:game.home_team).last.level)
 				line << win_rate(Rank.where(team:game.home_team).last.level,Rank.where(team:game.away_team).last.level)
+				line << win_rate(Rank.where(team:game.away_team).last.level,Rank.where(team:game.home_team).last.level)
 			end
 
 			line << game.home_team.acronym

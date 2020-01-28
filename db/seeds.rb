@@ -59,46 +59,6 @@ allcells.each do |acell|
 	end
 end
 
-
-# cell = 0
-# rawcomplete = 0
-
-# while (cell <= fixture_hash["feed"]["entry"].count)
-# 	if (fixture_hash["feed"]["entry"][cell]["gs$cell"]["row"].to_i != 1)
-
-# 	  case fixture_hash["feed"]["entry"][cell]["gs$cell"]["col"]
-# 	  when "1"
-# 	    date=fixture_hash["feed"]["entry"][cell]["gs$cell"]["$t"]
-# 	  when "2"
-# 	    time=fixture_hash["feed"]["entry"][cell]["gs$cell"]["$t"]
-# 	  when "3"
-# 	    stage=fixture_hash["feed"]["entry"][cell]["gs$cell"]["$t"].to_i
-# 	  when "4"
-# 	    home_team=Team.where(city:fixture_hash["feed"]["entry"][cell]["gs$cell"]["$t"]).take
-# 	  when "5"
-# 	    away_team=Team.where(city:fixture_hash["feed"]["entry"][cell]["gs$cell"]["$t"]).take
-# 	  when "6"
-# 	    scorehome=fixture_hash["feed"]["entry"][cell]["gs$cell"]["$t"]
-# 	  when "7"
-# 	    scoreaway=fixture_hash["feed"]["entry"][cell]["gs$cell"]["$t"]
-# 	  when "8"
-# 	    status=fixture_hash["feed"]["entry"][cell]["gs$cell"]["$t"]
-# 	  end
-
-# 	end
-
-# 	  if rawcomplete == 8
-# 	  	Fixture.create(date:date,time:time,home_team:home_team,away_team:away_team,status:status,stage:stage,scorehome:scorehome,scoreaway:scoreaway)
-# 	  	puts "New game created!"
-# 	  	rawcomplete = 1
-# 	  else
-# 	  	rawcomplete += 1
-# 	  end
-
-# 	puts "Done for #{cell}"
-# 	cell += 1
-# end
-
 ################################################################################################
 ################################################################################################
 ################################################################################################
