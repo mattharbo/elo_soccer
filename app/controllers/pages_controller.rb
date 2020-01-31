@@ -24,6 +24,7 @@ class PagesController < ApplicationController
 
 			line << game.home_team.city # ID 3 / 5
 			line << game.away_team.city # ID 4 / 6
+			line << game.id # ID 5 / 7
 			@games << line
 	
 		end

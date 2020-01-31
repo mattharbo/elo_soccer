@@ -3,21 +3,28 @@
 <center>
 	<% @games.each do |game| %>
 		<% if game[0] == "incomplete" %>
-			<small>(<%= (game[1]*100).round(2) %>%)</small>
-			<%= game[5] %>
-			<small>
-				<%= game[3] %>
-				<%= game[4] %>
-			</small>
-			<%= game[6] %>
-			<small>(<%= (game[2]*100).round(2) %>%)</small>
+			<%= link_to fixture_path(game[7]), {class: "classname"} do %>
+				<small>(<%= (game[1]*100).round(2) %>%)</small>
+				<%= game[5] %>
+				<small>
+					<%= game[3] %>
+					<%= game[4] %>
+				</small>
+				<%= game[6] %>
+				<small>(<%= (game[2]*100).round(2) %>%)</small>
+			<% end %>
 		<% else %>
-			<%= game[3] %>
-			<%= game[1] %>
-			 -
-			<%= game[2] %>
-			<%= game[4] %>
+			<%= link_to fixture_path(game[5]), {class: "classname"} do %>
+				<%= game[3] %>
+				<%= game[1] %>
+				 -
+				<%= game[2] %>
+				<%= game[4] %>
+			<% end %>
 		<% end %>
 		<br>
 	<% end %>
 </center>
+
+
+
