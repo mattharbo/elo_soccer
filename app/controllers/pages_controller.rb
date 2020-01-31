@@ -11,17 +11,19 @@ class PagesController < ApplicationController
 			line = []
 
 			if game.completed?
-				line << "complete"
-				line << game.scorehome
-				line << game.scoreaway
+				line << "complete" # ID 0
+				line << game.scorehome # ID 1
+				line << game.scoreaway # ID 2
 			else
-				line << "incomplete"
-				line << win_rate(Rank.where(team:game.home_team).last.level,Rank.where(team:game.away_team).last.level)
-				line << win_rate(Rank.where(team:game.away_team).last.level,Rank.where(team:game.home_team).last.level)
+				line << "incomplete" # ID 0
+				line << win_rate(Rank.where(team:game.home_team).last.level,Rank.where(team:game.away_team).last.level) # ID 1
+				line << win_rate(Rank.where(team:game.away_team).last.level,Rank.where(team:game.home_team).last.level) # ID 2
+				line << game.date.strftime("%d/%m") # ID 3
+				line << game.time.to_s(:time) # ID 4
 			end
 
-			line << game.home_team.acronym
-			line << game.away_team.acronym
+			line << game.home_team.city # ID 3 / 5
+			line << game.away_team.city # ID 4 / 6
 			@games << line
 	
 		end

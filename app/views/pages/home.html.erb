@@ -4,9 +4,12 @@
 	<% @games.each do |game| %>
 		<% if game[0] == "incomplete" %>
 			<small>(<%= (game[1]*100).round(2) %>%)</small>
-			<%= game[3] %>
-			 vs.
-			<%= game[4] %>
+			<%= game[5] %>
+			<small>
+				<%= game[3] %>
+				<%= game[4] %>
+			</small>
+			<%= game[6] %>
 			<small>(<%= (game[2]*100).round(2) %>%)</small>
 		<% else %>
 			<%= game[3] %>
