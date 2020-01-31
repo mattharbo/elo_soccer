@@ -2,7 +2,7 @@ class PagesController < ApplicationController
 	def home
 		targetstage = Fixture.where(completed:true).last.stage
 		Fixture.where(stage:targetstage,completed:true).count == 10 ? stage=targetstage+1 : stage=targetstage
-		showcasedgames = Fixture.where(stage:stage).order(date: :asc)
+		showcasedgames = Fixture.where(stage:stage).order(date: :asc, time: :asc)
 
 		@games = []
 
