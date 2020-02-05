@@ -26,5 +26,8 @@
 	<% end %>
 </center>
 
-
-
+<% for i in @theranking do %>
+	<%= i[0] %>
+	<small>(<%= i[1] %>)</small>
+	<br>
+<% end %>

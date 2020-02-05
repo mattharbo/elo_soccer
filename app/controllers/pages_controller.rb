@@ -18,7 +18,21 @@ class PagesController < ApplicationController
 				line << "incomplete" # ID 0
 				line << win_rate(Rank.where(team:game.home_team).last.level,Rank.where(team:game.away_team).last.level) # ID 1
 				line << win_rate(Rank.where(team:game.away_team).last.level,Rank.where(team:game.home_team).last.level) # ID 2
-				line << game.date.strftime("%d/%m") # ID 3
+
+				thedate = game.date.strftime("%Y-%m-%d")
+				tdy = Time.now.strftime("%Y-%m-%d").to_str
+				fortmrw = Time.now+(24*60*60)
+				tmrw = fortmrw.strftime("%Y-%m-%d").to_str
+
+				case thedate
+				when tdy
+					line << "Today"
+				when tmrw
+					line << "Tomorrow"
+				else
+					line << game.date.strftime("%d/%m") # ID 3	
+				end
+
 				line << game.time.to_s(:time) # ID 4
 			end
 
@@ -28,6 +42,17 @@ class PagesController < ApplicationController
 			@games << line
 	
 		end
+
+		ranking = []
+		teams = Team.all
+		teams.each do |targetteam|
+			tempteam = []
+			theteam = Rank.where(team:targetteam).last
+			tempteam << theteam.team.acronym
+			tempteam << theteam.level
+			ranking << tempteam
+		end
+		@theranking = ranking.sort { |a,b| b[1] <=> a[1] }
 	end
 
 	####################
