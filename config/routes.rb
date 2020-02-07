@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'players/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'pages#home'
   resources :teams
@@ -9,4 +10,5 @@ Rails.application.routes.draw do
   end	
   resources :ranks, only: [:index]
   get 'init_ranks', to: 'ranks#initializeranking'
+  resources :players, only:[:index]
 end

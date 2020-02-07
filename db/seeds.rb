@@ -11,54 +11,98 @@
 ############################ Feed the DB with L1 legacy games ##################################
 ################################################################################################
 
-require 'net/http'
-require 'json'
+# require 'net/http'
+# require 'json'
 
-url = 'https://spreadsheets.google.com/feeds/cells/1mcsw796p1dt9C4njlvOu9Xuvgn4Ztmc2SZonopawBSs/4/public/full?alt=json'
-uri = URI(url)
-response = Net::HTTP.get(uri)
-fixture_hash = JSON.parse(response)
+# url = 'https://spreadsheets.google.com/feeds/cells/1mcsw796p1dt9C4njlvOu9Xuvgn4Ztmc2SZonopawBSs/4/public/full?alt=json'
+# uri = URI(url)
+# response = Net::HTTP.get(uri)
+# fixture_hash = JSON.parse(response)
 
-allcells = fixture_hash["feed"]["entry"]
-$x = 0
-$temp = []
+# allcells = fixture_hash["feed"]["entry"]
+# $x = 0
+# $temp = []
 
-allcells.each do |acell|
+# allcells.each do |acell|
 
-	if (acell["gs$cell"]["row"].to_i != 1)
+# 	if (acell["gs$cell"]["row"].to_i != 1)
 
-	$x += 1
+# 	$x += 1
 
-	  case acell["gs$cell"]["col"].to_i
-	  when 1
-	    $temp << acell["gs$cell"]["$t"]
-	  when 2
-	    $temp << acell["gs$cell"]["$t"]
-	  when 3
-	    $temp << acell["gs$cell"]["$t"].to_i
-	  when 4
-	    $temp << Team.where(city:acell["gs$cell"]["$t"]).take
-	  when 5
-	    $temp << Team.where(city:acell["gs$cell"]["$t"]).take
-	  when 6
-	    $temp << acell["gs$cell"]["$t"]
-	  when 7
-	    $temp << acell["gs$cell"]["$t"]
-	  when 8
-	    $temp << acell["gs$cell"]["$t"]
-	  end
+# 	  case acell["gs$cell"]["col"].to_i
+# 	  when 1
+# 	    $temp << acell["gs$cell"]["$t"]
+# 	  when 2
+# 	    $temp << acell["gs$cell"]["$t"]
+# 	  when 3
+# 	    $temp << acell["gs$cell"]["$t"].to_i
+# 	  when 4
+# 	    $temp << Team.where(city:acell["gs$cell"]["$t"]).take
+# 	  when 5
+# 	    $temp << Team.where(city:acell["gs$cell"]["$t"]).take
+# 	  when 6
+# 	    $temp << acell["gs$cell"]["$t"]
+# 	  when 7
+# 	    $temp << acell["gs$cell"]["$t"]
+# 	  when 8
+# 	    $temp << acell["gs$cell"]["$t"]
+# 	  end
 
-		puts "Done for cell #{$x}"
+# 		puts "Done for cell #{$x}"
 
-		if ($x % 8 == 0)
-			Fixture.create(date:$temp[0],time:$temp[1],home_team:$temp[3],away_team:$temp[4],status:$temp[7],stage:$temp[2],scorehome:$temp[5],scoreaway:$temp[6])
-			puts "Game created"
+# 		if ($x % 8 == 0)
+# 			Fixture.create(date:$temp[0],time:$temp[1],home_team:$temp[3],away_team:$temp[4],status:$temp[7],stage:$temp[2],scorehome:$temp[5],scoreaway:$temp[6])
+# 			puts "Game created"
+# 			$temp.clear
+# 		end
+			
+# 	end
+# end
+
+################################################################################################
+############################ Feed the DB with L1 players from scraping ##################################
+################################################################################################
+
+# require 'open-uri'
+# require 'nokogiri'
+
+# alphabet = (10...36).map{ |i| i.to_s 36}
+
+# alphabet.each do |letter|
+	# url = "http://www.madeinfoot.com/ligue-1/l1-liste-#{letter.capitalize}.html"
+
+	url = "http://www.madeinfoot.com/ligue-1/l1-liste-A.html"
+
+	html_doc = Nokogiri::HTML(open(url))
+
+	selector = ".list-unstyled.joueurs > li"
+
+	x=0
+	$temp = []
+
+	html_doc.search(selector).each do |element|
+
+		x += 1
+
+		case x
+		when 1
+			$temp << element.text
+			# puts "Name: #{element.text}"
+		when 2
+			# puts "Club:#{element.text}"
+		when 3
+			$temp << element.text.strip
+			# puts "Nationality: #{element.text}"
+		end
+
+		if (x % 6 == 0)
+			x = 0
+			# The team must exist here
+			p Player.create(first_name:$temp[0],nationality:$temp[1]).valid?
+			puts "Player #{$temp[0]} (#{$temp[1]}) created"
 			$temp.clear
 		end
-			
-	end
-end
 
-################################################################################################
-################################################################################################
-################################################################################################
+	end
+# end
+

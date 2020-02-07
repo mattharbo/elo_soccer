@@ -18,22 +18,10 @@ class PagesController < ApplicationController
 				line << "incomplete" # ID 0
 				line << win_rate(Rank.where(team:game.home_team).last.level,Rank.where(team:game.away_team).last.level) # ID 1
 				line << win_rate(Rank.where(team:game.away_team).last.level,Rank.where(team:game.home_team).last.level) # ID 2
-
-				thedate = game.date.strftime("%Y-%m-%d")
-				tdy = Time.now.strftime("%Y-%m-%d").to_str
-				fortmrw = Time.now+(24*60*60)
-				tmrw = fortmrw.strftime("%Y-%m-%d").to_str
-
-				case thedate
-				when tdy
-					line << "Today"
-				when tmrw
-					line << "Tomorrow"
-				else
-					line << game.date.strftime("%d/%m") # ID 3	
-				end
+				line << definedate(game.date) # Date ID 3
 
 				line << game.time.to_s(:time) # ID 4
+				# line << definetime(game.time) # ID 4
 			end
 
 			line << game.home_team.city # ID 3 / 5
@@ -63,5 +51,35 @@ class PagesController < ApplicationController
 	def win_rate(p1ranking,p2ranking)
 		winrate = 1/(1+10**((p2ranking.to_f-p1ranking.to_f)/400))
 		return winrate
+	end
+
+	def definedate(inputdate)
+		thedate = inputdate.strftime("%Y-%m-%d")
+		tdy = Time.now.strftime("%Y-%m-%d").to_str
+		fortmrw = Time.now+(24*60*60)
+		tmrw = fortmrw.strftime("%Y-%m-%d").to_str
+
+		case thedate
+		when tdy
+			return "Today"
+		when tmrw
+			return "Tomorrow"
+		else
+			return inputdate.strftime("%d/%m") # ID 3	
+		end
+	end
+
+	def definetime(inputtime)
+
+		# return Time.at(Time.now-inputtime).strftime("%H:%M:%S")
+		# return Time.now-inputtime
+		# return Time.at(105*60*60)
+
+		# if () < ()
+		# 	return "Live"
+		# else
+		# 	return inputtime.to_s(:time)
+		# end
+
 	end
 end
