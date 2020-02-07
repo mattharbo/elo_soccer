@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_07_205248) do
+ActiveRecord::Schema.define(version: 2020_02_07_210635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "events", force: :cascade do |t|
+    t.bigint "fixture_id"
+    t.bigint "eventtype_id"
+    t.string "minute"
+    t.bigint "player_id"
+    t.bigint "team_id"
+    t.bigint "other_player_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["eventtype_id"], name: "index_events_on_eventtype_id"
+    t.index ["fixture_id"], name: "index_events_on_fixture_id"
+    t.index ["other_player_id"], name: "index_events_on_other_player_id"
+    t.index ["player_id"], name: "index_events_on_player_id"
+    t.index ["team_id"], name: "index_events_on_team_id"
+  end
 
   create_table "eventtypes", force: :cascade do |t|
     t.string "name"
@@ -66,6 +82,9 @@ ActiveRecord::Schema.define(version: 2020_02_07_205248) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "events", "eventtypes"
+  add_foreign_key "events", "fixtures"
+  add_foreign_key "events", "teams"
   add_foreign_key "players", "teams"
   add_foreign_key "ranks", "fixtures", on_delete: :cascade
   add_foreign_key "ranks", "teams"
