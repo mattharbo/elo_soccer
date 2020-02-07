@@ -12,6 +12,12 @@ class TeamsController < ApplicationController
 		redirect_to teams_path
 	end
 
+	def show
+		@team = Team.find(params[:id])
+
+		@teamplayers = Player.where(team:params[:id])
+	end
+
 	####################
 	### Private methods started from here !!
 	####################

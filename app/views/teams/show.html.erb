@@ -1,0 +1,11 @@
+<h3>
+	<%= @team.name %>
+</h3>
+
+<% @teamplayers.each do |player| %>
+
+	<%= player.first_name %> 
+	<b><%= player.last_name %></b>
+	(<%= player.nationality %>)
+	<br>
+<% end %>
