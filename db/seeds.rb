@@ -63,15 +63,15 @@
 ############################ Feed the DB with L1 players from scraping ##################################
 ################################################################################################
 
-# require 'open-uri'
-# require 'nokogiri'
+require 'open-uri'
+require 'nokogiri'
 
-# alphabet = (10...36).map{ |i| i.to_s 36}
+alphabet = (10...36).map{ |i| i.to_s 36}
 
-# alphabet.each do |letter|
-	# url = "http://www.madeinfoot.com/ligue-1/l1-liste-#{letter.capitalize}.html"
+alphabet.each do |letter|
+	url = "http://www.madeinfoot.com/ligue-1/l1-liste-#{letter.capitalize}.html"
 
-	url = "http://www.madeinfoot.com/ligue-1/l1-liste-A.html"
+	# url = "http://www.madeinfoot.com/ligue-1/l1-liste-A.html"
 
 	html_doc = Nokogiri::HTML(open(url))
 
@@ -86,23 +86,22 @@
 
 		case x
 		when 1
-			$temp << element.text
-			# puts "Name: #{element.text}"
+			$temp << element.text[0..element.text.rindex(' ')-1] #First name
+			$temp << element.text.split(' ')[-1] #Last name
 		when 2
-			# puts "Club:#{element.text}"
+			$temp << Team.where(city:element.text).take #Team
 		when 3
-			$temp << element.text.strip
-			# puts "Nationality: #{element.text}"
+			$temp << element.text.strip #Nationality
 		end
 
 		if (x % 6 == 0)
 			x = 0
 			# The team must exist here
-			p Player.create(first_name:$temp[0],nationality:$temp[1]).valid?
-			puts "Player #{$temp[0]} (#{$temp[1]}) created"
+			p Player.create(first_name:$temp[1],last_name:$temp[0],nationality:$temp[3],team:$temp[2]).valid?
+			puts "Player #{$temp[1]} #{$temp[0]} (#{$temp[3]}) created"
 			$temp.clear
 		end
 
 	end
-# end
+end
 
