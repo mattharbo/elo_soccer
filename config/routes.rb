@@ -4,10 +4,12 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :teams
   resources :fixtures do
+    resources :events, only: [:index,:new,:create,:edit] # Not needed for now
   	collection do
   		get 'to_complete' => 'fixtures#tocomplete'
   	end
   end	
+
   resources :ranks, only: [:index]
   get 'init_ranks', to: 'ranks#initializeranking'
   resources :players, only:[:index]

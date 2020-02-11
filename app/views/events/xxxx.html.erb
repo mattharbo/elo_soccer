@@ -1,0 +1,29 @@
+<h3>Goals for games <%= @fixture.id %></h3>
+
+<b><%= @fixture.home_team.name %></b>
+<%= @fixture.scorehome %> <!--Nombre d'input fields nécessaire pour la home team-->
+<%= @fixture.scoreaway %> <!--Nombre d'input fields nécessaire pour la away team-->
+<b><%= @fixture.away_team.name %></b>
+
+<br><br>
+
+<%= form_for [@fixture] do |f| %>
+
+		<%= f.fields_for :events do |e| %>
+
+		    <%= e.label :minute, "Minute of the goal event"%>
+			<%= e.text_field :minute %>
+			&nbsp;
+			<%= e.label :player, "Home players"%>
+			<%= select_tag(:player, options_for_select(@homeplayers)) %>
+			&nbsp;
+			<%= e.label :other_player, "Assist players"%>
+			<%= select_tag(:other_player, options_for_select(@homeplayers)) %>
+			<br>
+
+		<% end %>
+      
+	<br>
+	<%= f.submit %>
+<% end %>
+

@@ -1,6 +1,6 @@
 <h3>Game ID in Database <%= @fixture.id %>: </h3>
 
-<%= form_for @fixture do |f| %>
+<%= form_for [@fixture] do |f| %>
 
 	<h3>
 		<%= f.label :scorehome, @fixture.home_team.name %>
@@ -13,11 +13,76 @@
 	</h3>
 
 	was played on <%= @fixture.date %> at <%= @fixture.time.strftime("%H:%M") %>
+	• <%= link_to "Dismiss", to_complete_fixtures_path %>
 
 	<br><br>
-	<%= f.submit "Update result"%>
+
+	<table style="float: left">
+		<thead bgcolor=#D1DEEA>
+			<tr>
+				<th colspan="3">Home team</th>
+			</tr>
+			<tr>
+				<th>Min goal</th>
+				<th>Player</th>
+				<th>Assist player</th>
+			</tr>
+		</thead>
+		<tbody bgcolor=#F7FBFA>
+			<%= f.fields_for :events, 7.times { @fixture.events.build } do |builder| %>
+			<tr>
+				<td>
+					<%= builder.text_field :minute %>
+				</td>
+				<td>
+					<%= builder.select :player, options_for_select(@homeplayers) %>
+				</td>
+				<td>
+					<%= builder.select :other_player, options_for_select(@homeplayers) %>
+				</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+	<table style="float: left;">
+		<thead bgcolor=#F8D1D6>
+			<tr >
+				<th colspan="3">Away team</th>
+			</tr>
+		<tr>
+			<th>Min goal</th>
+			<th>Player</th>
+			<th>Assist player</th>
+		</tr>
+		</thead>
+		<tbody bgcolor=#F7FBFA>
+			<%= f.fields_for :events do |builder| %>
+			<tr>
+				<td>
+					<%= builder.text_field :minute %>
+				</td>
+				<td>
+					<%= builder.select :player, options_for_select(@awayplayers) %>
+				</td>
+				<td>
+					<%= builder.select :other_player, options_for_select(@awayplayers) %>
+				</td>
+			</tr>
+			<% end %>
+		</tbody>
+
+			<tr>
+				<td colspan="6">
+					<%= f.submit "Submit"%>
+				</td>
+			</tr>
+	</table>
 
 <% end %>
 
-<br>
-<%= link_to "Dismiss", to_complete_fixtures_path %>
+
+
+
+
+

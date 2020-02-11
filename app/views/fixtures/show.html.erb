@@ -19,3 +19,13 @@ Stage <%= @fixture.stage %>
 Played on 
 <%= @fixture.date %> at <%= @fixture.time.strftime("%H:%M") %>
 </center>
+
+<% @fixtureevents.each do |event| %>
+
+	<%= event.minute %>
+	 <%= event.player.first_name %>
+	 <b><%= event.player.last_name %></b>
+	 (<%= event.team.acronym %>)
+	<br>
+
+<% end %>

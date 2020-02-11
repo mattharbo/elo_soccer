@@ -46,6 +46,8 @@ class FixturesController < ApplicationController
 
 	def show
 		@fixture = Fixture.find(params[:id])
+
+		@fixtureevents = Event.where(fixture:params[:id])
 	end
 
 	def tocomplete
@@ -55,6 +57,25 @@ class FixturesController < ApplicationController
 
 	def edit
 		@fixture = Fixture.find(params[:id])
+
+		#######################################
+		### ADDED FOR THE EVENTS CREATION ###
+
+		homeplayers_for_array = Player.where(team:@fixture.home_team)
+		
+		@homeplayers = homeplayers_for_array.map do |d|
+			[d.first_name+" "+d.last_name, d.id]
+		end
+		@homeplayers.unshift(nil)
+
+		awayplayers_for_array = Player.where(team:@fixture.away_team)
+		@awayplayers = awayplayers_for_array.map do |d|
+			[d.first_name+" "+d.last_name, d.id]
+		end
+		@awayplayers.unshift(nil)
+
+		#######################################
+
 	end
 
 	def update
@@ -85,6 +106,29 @@ class FixturesController < ApplicationController
 			win_rate(awayrank,homerank))
 		Rank.create(fixture:@fixturetoupdate,team:@fixturetoupdate.away_team,level:newawayrank)
 		################
+
+		eventfixture = Fixture.find(params[:id])
+		eventtype = Eventtype.where(name:"Goal").take
+
+		params[:fixture][:events_attributes].each do |key, value|
+
+			if !value[:minute].empty?
+				eventmin = value[:minute]
+				eventplayer = Player.find(value[:player])
+				eventteam = Fixture.find(params[:id]).home_team # tous les events pour la home team par défault dans un 1er temps
+
+				eventcreationhash = {fixture:eventfixture,eventtype:eventtype,minute:eventmin,player:eventplayer,team:eventteam}
+
+				unless value[:other_player].empty?
+					eventotherplayer = Player.find(value[:other_player])
+					eventcreationhash["other_player"]=eventotherplayer
+				end
+
+				Event.create(eventcreationhash)
+
+			end
+		end
+
 		redirect_to to_complete_fixtures_path
 	end
 
