@@ -22,10 +22,10 @@ Played on
 
 <% @fixtureevents.each do |event| %>
 
-	<%= event.minute %>
 	 <%= event.player.first_name %>
 	 <b><%= event.player.last_name %></b>
 	 (<%= event.team.acronym %>)
+	 <%= event.minute %>'
 	<br>
 
 <% end %>

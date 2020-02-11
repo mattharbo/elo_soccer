@@ -47,7 +47,7 @@ class FixturesController < ApplicationController
 	def show
 		@fixture = Fixture.find(params[:id])
 
-		@fixtureevents = Event.where(fixture:params[:id])
+		@fixtureevents = Event.where(fixture:params[:id]).order(:minute)
 	end
 
 	def tocomplete

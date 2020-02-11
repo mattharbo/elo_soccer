@@ -14,6 +14,8 @@ class PagesController < ApplicationController
 				line << "complete" # ID 0
 				line << game.scorehome # ID 1
 				line << game.scoreaway # ID 2
+				line << @fixturehomeevents = Event.where(fixture:game.id,team:game.home_team) # Home team events
+				line << @fixtureawayevents = Event.where(fixture:game.id, team:game.away_team) # Away team events
 			else
 				line << "incomplete" # ID 0
 				line << win_rate(Rank.where(team:game.home_team).last.level,Rank.where(team:game.away_team).last.level) # ID 1

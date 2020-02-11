@@ -15,12 +15,28 @@
 			<% end %>
 		<% else %>
 			<%= link_to fixture_path(game[5]), {class: "classname"} do %>
-				<%= game[3] %>
+				<%= game[5] %>
 				<%= game[1] %>
 				 -
 				<%= game[2] %>
-				<%= game[4] %>
+				<%= game[6] %>
 			<% end %>
+				<table>
+					<tr>
+						<td>
+							<% game[3].each do |hevent| %>
+								<%= hevent.player.last_name %>
+								<%= hevent.minute %>' <br>
+							<% end %>
+						</td>
+						<td>
+							<% game[4].each do |aevent| %>
+								<%= aevent.minute %>'
+								<%= aevent.player.last_name %> <br>
+							<% end %>
+						</td>
+					</tr>
+				</table>
 		<% end %>
 		<br>
 	<% end %>
