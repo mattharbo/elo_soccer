@@ -110,12 +110,19 @@ class FixturesController < ApplicationController
 		eventfixture = Fixture.find(params[:id])
 		eventtype = Eventtype.where(name:"Goal").take
 
-		params[:fixture][:events_attributes].each do |key, value|
+		params[:fixture][:events_attributes].each do |index,value|
 
 			if !value[:minute].empty?
+
 				eventmin = value[:minute]
 				eventplayer = Player.find(value[:player])
-				eventteam = Fixture.find(params[:id]).home_team # tous les events pour la home team par défault dans un 1er temps
+
+				case 
+				when index.to_i <= 6
+					eventteam = Fixture.find(params[:id]).home_team
+				when index.to_i > 6
+					eventteam = Fixture.find(params[:id]).away_team
+				end
 
 				eventcreationhash = {fixture:eventfixture,eventtype:eventtype,minute:eventmin,player:eventplayer,team:eventteam}
 
@@ -124,11 +131,10 @@ class FixturesController < ApplicationController
 					eventcreationhash["other_player"]=eventotherplayer
 				end
 
-				raise
-
 				Event.create(eventcreationhash)
 
 			end
+
 		end
 
 		redirect_to to_complete_fixtures_path
