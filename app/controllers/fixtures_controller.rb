@@ -64,13 +64,13 @@ class FixturesController < ApplicationController
 		homeplayers_for_array = Player.where(team:@fixture.home_team)
 		
 		@homeplayers = homeplayers_for_array.map do |d|
-			[d.first_name+" "+d.last_name, d.id]
+			[d.last_name+" "+d.first_name, d.id]
 		end
 		@homeplayers.unshift(nil)
 
 		awayplayers_for_array = Player.where(team:@fixture.away_team)
 		@awayplayers = awayplayers_for_array.map do |d|
-			[d.first_name+" "+d.last_name, d.id]
+			[d.last_name+" "+d.first_name, d.id]
 		end
 		@awayplayers.unshift(nil)
 
@@ -123,6 +123,8 @@ class FixturesController < ApplicationController
 					eventotherplayer = Player.find(value[:other_player])
 					eventcreationhash["other_player"]=eventotherplayer
 				end
+
+				raise
 
 				Event.create(eventcreationhash)
 
