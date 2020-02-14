@@ -2,34 +2,49 @@ class PagesController < ApplicationController
 	def home
 		targetstage = Fixture.where(completed:true).last.stage
 		Fixture.where(stage:targetstage,completed:true).count == 10 ? stage=targetstage+1 : stage=targetstage
-		showcasedgames = Fixture.where(stage:stage).order(date: :asc, time: :asc)
+		# showcasedgames = Fixture.where(stage:stage).order(date: :asc, time: :asc)
+		showcasedgames = Fixture.where(stage: 1..stage).order(stage: :desc, time: :asc).group_by(&:stage)
 
-		@games = []
+		@gamehistory=Array.new
 
-		showcasedgames.each do |game|
+		showcasedgames.each do |journey|
 
-			line = []
+			counter=0
 
-			if game.completed?
-				line << "complete" # ID 0
-				line << game.scorehome # ID 1
-				line << game.scoreaway # ID 2
-				line << @fixturehomeevents = Event.where(fixture:game.id,team:game.home_team) # Home team events
-				line << @fixtureawayevents = Event.where(fixture:game.id, team:game.away_team) # Away team events
-			else
-				line << "incomplete" # ID 0
-				line << win_rate(Rank.where(team:game.home_team).last.level,Rank.where(team:game.away_team).last.level) # ID 1
-				line << win_rate(Rank.where(team:game.away_team).last.level,Rank.where(team:game.home_team).last.level) # ID 2
-				line << definedate(game.date) # Date ID 3
+			day=Hash.new
 
-				line << game.time.to_s(:time) # ID 4
-				# line << definetime(game.time) # ID 4
-			end
+			day[:stage]=journey[0] #Stage number
+			day[:games]=Hash.new
 
-			line << game.home_team.city # ID 3 / 5
-			line << game.away_team.city # ID 4 / 6
-			line << game.id # ID 5 / 7
-			@games << line
+			journey[1].each do |game| #Tables with all games of the stage
+
+				counter += 1
+
+				one_game=Hash.new
+
+				if game.completed? #When a game is complete
+					one_game[:status]="completed"
+					one_game[:scorehome]=game.scorehome
+					one_game[:scoreaway]=game.scoreaway
+					one_game[:hometeamevents]=Event.where(fixture:game.id,team:game.home_team)
+					one_game[:awayteamevents]=Event.where(fixture:game.id,team:game.away_team)
+				else
+					one_game[:status]="incompleted"
+					one_game[:date]=definedate(game.date)
+					one_game[:time]=game.time.to_s(:time)
+					one_game[:homewinrate]=win_rate(Rank.where(team:game.home_team).last.level,Rank.where(team:game.away_team).last.level)
+					one_game[:awaywinrate]=win_rate(Rank.where(team:game.away_team).last.level,Rank.where(team:game.home_team).last.level)
+				end
+
+				one_game[:gameid]=game.id
+				one_game[:hometeam]=game.home_team.city
+				one_game[:awayteam]=game.away_team.city
+
+				day[:games][counter.to_s] = one_game
+
+			end			
+
+			@gamehistory << day
 	
 		end
 

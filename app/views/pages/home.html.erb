@@ -1,45 +1,30 @@
-<h1>Home page</h1>
+<h3>News</h3>
 
 <center>
-	<% @games.each do |game| %>
-		<% if game[0] == "incomplete" %>
-			<%= link_to fixture_path(game[7]), {class: "classname"} do %>
-				<small>(<%= (game[1]*100).round(2) %>%)</small>
-				<%= game[5] %>
-				<small>
-					<%= game[3] %>
-					<%= game[4] %>
-				</small>
-				<%= game[6] %>
-				<small>(<%= (game[2]*100).round(2) %>%)</small>
-			<% end %>
-		<% else %>
-			<%= link_to fixture_path(game[5]), {class: "classname"} do %>
-				<%= game[5] %>
-				<%= game[1] %>
-				 -
-				<%= game[2] %>
-				<%= game[6] %>
-			<% end %>
-				<small><table>
-					<tr>
-						<td>
-							<% game[3].each do |hevent| %>
-								<%= hevent.player.last_name %>
-								<%= hevent.minute %>' <br>
-							<% end %>
-						</td>
-						<td>
-							<% game[4].each do |aevent| %>
-								<%= aevent.minute %>'
-								<%= aevent.player.last_name %> <br>
-							<% end %>
-						</td>
-					</tr>
-				</table></small>
-		<% end %>
+
+	<!-- https://www.devroom.io/2007/01/12/rails-group-results-by-week-using-group_by/ -->
+	<!-- @showcasedgames.group_by(&:stage).sort.each do |stage, games| -->
+
+	<% @gamehistory.each do |journey| %>	
+		<b>Stage <%= journey[:stage] %></b>
 		<br>
+
+		<% journey[:games].each do |game| %>
+			<%= ((game[1][:homewinrate]).to_f*100).round(2) %>
+			<%= game[1][:hometeam] %>
+			<%= game[1][:scorehome] %>
+			<%= game[1][:date] %>
+			<%= game[1][:time] %>
+			<%= game[1][:scoreaway] %>
+			<%= game[1][:awayteam] %>
+			<%= ((game[1][:awaywinrate]).to_f*100).round(2) %>
+			<br>
+
+		<% end %>
+	<br>
 	<% end %>
+
+
 </center>
 
 <% for i in @theranking do %>
