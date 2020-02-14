@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 		targetstage = Fixture.where(completed:true).last.stage
 		Fixture.where(stage:targetstage,completed:true).count == 10 ? stage=targetstage+1 : stage=targetstage
 		# showcasedgames = Fixture.where(stage:stage).order(date: :asc, time: :asc)
-		showcasedgames = Fixture.where(stage: 1..stage).order(stage: :desc, time: :asc).group_by(&:stage)
+		showcasedgames = Fixture.where(stage: 1..stage).order(stage: :desc, date: :desc).group_by(&:stage)
 
 		@gamehistory=Array.new
 
