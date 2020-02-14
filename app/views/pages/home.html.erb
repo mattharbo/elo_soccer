@@ -13,26 +13,31 @@
 
 			<% if game[1][:status] == "completed" %>
 				<%= game[1][:hometeam] %>
-				<%= game[1][:scorehome] %>
-				<%= game[1][:scoreaway] %>
+ 				<b style="color:darkblue"><%= game[1][:scorehome] %> - 
+				<%= game[1][:scoreaway] %></b>
 				<%= game[1][:awayteam] %>
+
 				<% game[1][:hometeamevents].each do |event| %>
-					<br><small style="color:grey"><%= event.player.last_name %>
+					<br>
+					<small style="color:grey"><%= event.player.last_name %>
 					<%= event.minute %>' </small>
 				<% end %>
+
 				<% game[1][:awayteamevents].each do |event| %>
-					<br><small style="color:grey"><%= event.minute %>' 
+					<br>
+					<small style="color:grey"><%= event.minute %>' 
 					<%= event.player.last_name %></small>
 				<% end %>
+
 			<% else %>
-				<small><%= ((game[1][:homewinrate]).to_f*100).round(2) %>%</small>
+				<small>(<%= ((game[1][:homewinrate]).to_f*100).round(2) %>%)</small>
 				<%= game[1][:hometeam] %>
 				<small><b>
-					<%= game[1][:date] %>
+					<%= game[1][:date] %> | 
 					<%= game[1][:time] %>
 				</b></small>
 				<%= game[1][:awayteam] %>
-				<small><%= ((game[1][:awaywinrate]).to_f*100).round(2) %>%</small>
+				<small>(<%= ((game[1][:awaywinrate]).to_f*100).round(2) %>%)</small>
 			<% end %>
 
 			<br>
