@@ -37,8 +37,8 @@ class PagesController < ApplicationController
 				end
 
 				one_game[:gameid]=game.id
-				one_game[:hometeam]=game.home_team.city
-				one_game[:awayteam]=game.away_team.city
+				one_game[:hometeam]=game.home_team.name
+				one_game[:awayteam]=game.away_team.name
 
 				day[:games][counter.to_s] = one_game
 
