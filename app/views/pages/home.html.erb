@@ -1,4 +1,4 @@
-<center>
+<div class="centercontent">
 
 	<!-- https://www.devroom.io/2007/01/12/rails-group-results-by-week-using-group_by/ -->
 	<!-- @showcasedgames.group_by(&:stage).sort.each do |stage, games| -->
@@ -105,29 +105,33 @@
 
 	<% end %>
 
-</center>
+</div> <!-- centercontent -->
 
-<div class="ranking-width ranking-head">
-	<h2>Team health</h2>
-</div>
-<div class="ranking-width ranking-container">
+<div class="rightcontent">
 
-	<% for i in @theranking do %>
-		<div class="ranking-team">
-			<div class="ranking-team-name">
-				<%= i[0] %>
-			</div>
-			<div class="ranking-latest">
-				<img src="win.svg">
-				<img src="lost.svg">
-				<img src="win.svg">
-				<img src="win.svg">
-				<img src="draw.svg">
-			</div>
-			<div class="ranking-gbo">
-				<b>-</b> GBO
-			</div>
-		</div>
-	<% end %>
+	<div class="ranking-width ranking-head">
+		<h2>Team health</h2>
+	</div>
+	<div class="ranking-width ranking-container">
 
-</div>
+		<% for i in @theranking do %>
+			<div class="ranking-team">
+				<div class="ranking-team-name">
+					<%= i[0] %>
+				</div>
+				<div class="ranking-latest">
+					<img src="win.svg">
+					<img src="lost.svg">
+					<img src="win.svg">
+					<img src="win.svg">
+					<img src="draw.svg">
+				</div>
+				<div class="ranking-gbo">
+					<b>5</b> GBO
+				</div>
+			</div>
+		<% end %>
+
+	</div>
+
+</div> <!-- rightcontent -->

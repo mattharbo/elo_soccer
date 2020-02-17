@@ -10,17 +10,51 @@
   </head>
 
   <body>
-    <%= link_to "Home", root_path %>
-     - 
-    <%= link_to "Teams", teams_path %>
-     - 
-    <%= link_to "Players", players_path %>
-     - 
-    <%= link_to "Ranking", ranks_path %>
-     - 
-    <%= link_to "Fixtures", fixtures_path %>
-     - 
-    (<%= link_to "Reports", to_complete_fixtures_path %>)
-    <%= yield %>
+
+    <div class="maincontainer">
+
+        <div class="leftcontent">
+
+            <img src="momentum-logo.svg">
+
+            <ul>
+                <li>
+                    <%= link_to root_path do %>
+                        <img src="news-menu.svg"> News
+                    <%end%>
+                </li>
+                <li>
+                    <%= link_to teams_path do %>
+                        <img src="stat-menu.svg"> Teams
+                    <%end%>
+                </li>
+                <li>
+                    <%= link_to players_path do %>
+                        <img src="profile-menu.svg"> Players
+                    <%end%>
+                </li>
+                <li>
+                    <%= link_to ranks_path do %>
+                        <img src="standing-menu.svg"> Ranking
+                    <%end%>
+                </li>
+                <li>
+                    <%= link_to fixtures_path do %>
+                        <img src="bookmark-menu.svg"> Fixtures
+                    <%end%>
+                </li>
+                <li>
+                    <%= link_to to_complete_fixtures_path do %>
+                        <img src="report-menu.svg"> Reports
+                    <%end%>
+                </li>
+            </ul>
+            
+        </div>
+
+        <%= yield %>
+        
+    </div>
+
   </body>
 </html>
