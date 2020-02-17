@@ -2,48 +2,168 @@
 
 <center>
 
+	<!--
+
+	<div class="journey">
+		<h2>
+			Matchweek 22
+		</h2>
+	</div>
+
+	<div class="fixture">
+
+		<div class="fixture-topline topline-padding-completed">
+			<div class="fixture-topline-home">
+				<div class="rank">(18)</div>
+				<div class="team home">Paris Saint-Germain</div>
+			</div>
+			<div class="fixture-topline-info">
+				<h3>Today</h3>
+				<p>20:00</p>
+			</div>
+			<div class="fixture-topline-away">
+				<div class="team away">Paris Saint-Germain</div>
+				<div class="rank">(18)</div>
+			</div>
+		</div>
+
+		<div class="fixture-bottomline">
+			<div class="home-proba">
+				65%
+			</div>
+			<div class="away-proba">
+				35%
+			</div>
+		</div>
+
+		<a class="fixture-button bookmark">
+			<img src="bookmark-add.svg">
+		</a>
+
+		<a class="fixture-button share">
+			<img src="upload.svg">
+		</a>
+
+	</div>
+
+	<div class="fixture">
+
+		<div class="fixture-topline topline-padding-incompleted">
+			<div class="fixture-topline-home">
+				<div class="rank">(18)</div>
+				<div class="team home">Paris Saint-Germain</div>
+			</div>
+			<div class="fixture-topline-info">
+				<h2>5 - 0</h2>
+			</div>
+			<div class="fixture-topline-away">
+				<div class="team away">Paris Saint-Germain</div>
+				<div class="rank">(18)</div>
+			</div>
+		</div>
+
+		<a class="fixture-button bookmark">
+			<img src="bookmark-add.svg">
+		</a>
+
+		<a class="fixture-button share">
+			<img src="upload.svg">
+		</a>
+
+
+	</div>
+	-->
+
+	
+
 	<!-- https://www.devroom.io/2007/01/12/rails-group-results-by-week-using-group_by/ -->
 	<!-- @showcasedgames.group_by(&:stage).sort.each do |stage, games| -->
 
-	<% @gamehistory.each do |journey| %>	
-		<b>Stage <%= journey[:stage] %></b>
-		<br>
+	<% @gamehistory.each do |journey| %>
+
+		<div class="journey">
+			<h2>
+				Matchweek <%= journey[:stage] %>
+			</h2>
+		</div>
 
 		<% journey[:games].each do |game| %>
 
-			<% if game[1][:status] == "completed" %>
-				<%= game[1][:hometeam] %>
- 				<b style="color:darkgreen"><%= game[1][:scorehome] %> - 
-				<%= game[1][:scoreaway] %></b>
-				<%= game[1][:awayteam] %>
+			<div class="fixture">
 
+			<% if game[1][:status] == "completed" %>
+
+
+				<div class="fixture-topline topline-padding-incompleted">
+					<div class="fixture-topline-home">
+						<div class="rank">&nbsp;</div>
+						<div class="team home" style="color: #<%= game[1][:homecolor] %>"><%= game[1][:hometeam] %></div>
+					</div>
+					<div class="fixture-topline-info">
+						<h2><%= game[1][:scorehome] %> - <%= game[1][:scoreaway] %></h2>
+					</div>
+					<div class="fixture-topline-away">
+						<div class="team away" style="color: #<%= game[1][:awaycolor] %>"><%= game[1][:awayteam] %></div>
+						<div class="rank">&nbsp;</div>
+					</div>
+				</div>
+
+				<!--
 				<% game[1][:hometeamevents].each do |event| %>
 					<br>
-					<small style="color:grey"><%= event.player.last_name %>
+					<small style="color:#9B9B9B"><%= event.player.last_name %>
 					<%= event.minute %>' </small>
 				<% end %>
 
 				<% game[1][:awayteamevents].each do |event| %>
 					<br>
-					<small style="color:grey"><%= event.minute %>' 
+					<small style="color:#9B9B9B"><%= event.minute %>' 
 					<%= event.player.last_name %></small>
 				<% end %>
+				-->
 
 			<% else %>
-				<small>(<%= ((game[1][:homewinrate]).to_f*100).round(2) %>%)</small>
-				<%= game[1][:hometeam] %>
-				<small><b>
-					<%= game[1][:date] %> | 
-					<%= game[1][:time] %>
-				</b></small>
-				<%= game[1][:awayteam] %>
-				<small>(<%= ((game[1][:awaywinrate]).to_f*100).round(2) %>%)</small>
+				<div class="fixture-topline topline-padding-completed">
+					<div class="fixture-topline-home">
+						<div class="rank">&nbsp;</div>
+						<div class="team home" style="color: #<%= game[1][:homecolor] %>">
+							<%= game[1][:hometeam] %>
+						</div>
+					</div>
+					<div class="fixture-topline-info">
+						<h3><%= game[1][:date] %></h3>
+						<p><%= game[1][:time] %></p>
+					</div>
+					<div class="fixture-topline-away">
+						<div class="team away" style="color: #<%= game[1][:awaycolor] %>"><%= game[1][:awayteam] %></div>
+						<div class="rank">&nbsp;</div>
+					</div>
+				</div>
+
+				<div class="fixture-bottomline">
+					<div class="home-proba">
+						<%= ((game[1][:homewinrate]).to_f*100).round(1) %>%
+					</div>
+					<div class="away-proba">
+						<%= ((game[1][:awaywinrate]).to_f*100).round(1) %>%
+					</div>
+				</div>
+
 			<% end %>
 
-			<br>
+			<a class="fixture-button bookmark">
+				<img src="bookmark-add.svg">
+			</a>
+
+			<a class="fixture-button share">
+				<img src="upload.svg">
+			</a>
+
+			</div> <!-- Fixture -->
+
 
 		<% end %>
-	<br>
+
 	<% end %>
 
 

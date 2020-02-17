@@ -1,3 +1,128 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.journey{
+	position:relative;
+	background-color:white;
+	border:1px solid #E9E9E9;
+	text-align:left;
+	height:48px;
+	margin-top:10px;// Temporary solution
+	width:600px; // To be removed when layout in place
+}
+.journey h2{
+	font-size:14px;
+	font-weight:700;
+	margin: 15px 0 0 32px;
+}
+.fixture{
+	background-color:white;
+	border:1px solid #E9E9E9;
+	position:relative;
+	text-align:center;
+	margin-top:-1px;
+	width:600px; // To be removed when layout in place
+}
+.fixture:hover{
+	//background-color:#F7FBFA;
+}
+.fixture-topline{
+	//background-color:orange;
+	display:flex;
+	align-items:center;
+	justify-content: space-between;
+}
+.topline-padding-completed{
+	padding:18px 0 0 0;
+}
+.topline-padding-incompleted{
+	padding:20px 0 20px 0;
+}
+.fixture-topline-home{
+	//background-color:red;
+	flex:0 0 260px;
+	display:flex;
+	align-items:center;
+	text-align:right;
+}
+.rank{
+	flex:1 0 auto;
+	color:#B5B5B5;
+	font-weight:bolder;
+	font-size:12px;
+	font-weight:500;
+}
+.team{
+	//color:#004889;
+	//background-color:#D1DEEA;
+	border-radius:3px;
+	padding:4px 9px;
+	font-weight:700;
+}
+.home{
+	margin-left: 10px;
+}
+.away{
+	margin-right: 10px;
+}
+.fixture-topline-info h3{
+	margin:0 0 2px 0;
+	font-size:12px;
+}
+.fixture-topline-info p{
+	margin:0;
+	font-size:12px;
+}
+.fixture-topline-info h2{
+	margin:0 0 2px 0;
+	font-size:16px;
+}
+.fixture-topline-away{
+	//background-color:blue;
+	flex:0 0 260px;
+	display:flex;
+	align-items:center;
+	text-align:left;
+}
+.fixture-bottomline{
+	display:flex;
+	justify-content: space-between;
+	//background-color:pink;
+	padding:13px 0 17px 0;
+	color:#5A5A5A;
+	font-weight:700;
+	font-size:12px;
+}
+.home-proba{
+	flex:1 0 auto;
+	text-align:right;
+	padding-right:40px;
+}
+.away-proba{
+	flex:1 0 auto;
+	text-align:left;
+	padding-left:40px;
+}
+.fixture-button{
+	text-decoration:none;
+	position:absolute;
+	width: 25px;
+  	height: 25px;
+  	border-radius:50%;
+  	display:flex;
+  	align-items:center;
+  	justify-content: space-around;
+}
+.fixture-button:hover{
+	background-color:#EAFBF7;
+	cursor:pointer;
+}
+.bookmark{
+	top:7px;
+	right:7px;
+}
+.share{
+	bottom:7px;
+	right:7px;
+}
