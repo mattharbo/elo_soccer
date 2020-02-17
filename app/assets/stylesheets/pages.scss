@@ -4,12 +4,12 @@
 
 .journey{
 	position:relative;
-	background-color:white;
+	background-color:#FCFCFC;
 	border:1px solid #E9E9E9;
 	text-align:left;
 	height:48px;
 	margin-top:10px;// Temporary solution
-	width:600px; // To be removed when layout in place
+	width:570px; // To be removed when layout in place
 }
 .journey h2{
 	font-size:14px;
@@ -22,7 +22,7 @@
 	position:relative;
 	text-align:center;
 	margin-top:-1px;
-	width:600px; // To be removed when layout in place
+	width:570px; // To be removed when layout in place
 }
 .fixture:hover{
 	//background-color:#F7FBFA;
@@ -55,7 +55,8 @@
 }
 .team{
 	//color:#004889;
-	//background-color:#D1DEEA;
+	background-color:#F1F1F1;
+	//background-color:lighten(#029FE3,50%);
 	border-radius:3px;
 	padding:4px 9px;
 	font-weight:700;
