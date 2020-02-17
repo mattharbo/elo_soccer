@@ -23,13 +23,17 @@
 				<div class="fixture-topline topline-padding-incompleted">
 					<div class="fixture-topline-home">
 						<div class="rank">&nbsp;</div>
-						<div class="team home" style="color: #<%= game[1][:homecolor] %>"><%= game[1][:hometeam] %></div>
+						<div class="team home" style="color:#<%=game[1][:homecolor]%>;">
+							<%= game[1][:hometeam] %>
+						</div>
 					</div>
 					<div class="fixture-topline-info">
 						<h2><%= game[1][:scorehome] %> - <%= game[1][:scoreaway] %></h2>
 					</div>
 					<div class="fixture-topline-away">
-						<div class="team away" style="color: #<%= game[1][:awaycolor] %>"><%= game[1][:awayteam] %></div>
+						<div class="team away" style="color:#<%=game[1][:awaycolor]%>;">
+							<%= game[1][:awayteam] %>
+						</div>
 						<div class="rank">&nbsp;</div>
 					</div>
 				</div>
@@ -52,7 +56,7 @@
 				<div class="fixture-topline topline-padding-completed">
 					<div class="fixture-topline-home">
 						<div class="rank">&nbsp;</div>
-						<div class="team home" style="color: #<%= game[1][:homecolor] %>">
+						<div class="team home" style="color:#<%=game[1][:homecolor]%>;">
 							<%= game[1][:hometeam] %>
 						</div>
 					</div>
@@ -61,7 +65,7 @@
 						<p><%= game[1][:time] %></p>
 					</div>
 					<div class="fixture-topline-away">
-						<div class="team away" style="color: #<%= game[1][:awaycolor] %>">
+						<div class="team away" style="color:#<%=game[1][:awaycolor]%>;">
 							<%= game[1][:awayteam] %>		
 						</div>
 						<div class="rank">&nbsp;</div>
