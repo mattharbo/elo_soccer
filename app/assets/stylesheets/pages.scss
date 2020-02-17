@@ -2,8 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// #######################
+///// GAME CARD COMPONENT
+// #######################
+
 .journey{
-	position:relative;
 	background-color:white;
 	border:1px solid #E9E9E9;
 	text-align:left;
@@ -144,4 +147,51 @@
 .share{
 	bottom:6px;
 	right:3px;
+}
+
+// #######################
+///// RANKING COMPONENT
+// #######################
+
+.ranking-width{
+	width:310px;
+}
+.ranking-head{
+	position:relative;
+	background-color:#F7FBFA;
+	text-align:left;
+	height:40px;
+	border-bottom:1px solid #D8D8D8;
+	border-top-left-radius:7px;
+	border-top-right-radius:7px;
+}
+.ranking-head h2{
+	position:absolute;
+	font-size:14px;
+	font-weight:700;
+	margin:12px 0 0 20px;
+}
+.ranking-container{
+	background-color:#F7FBFA;
+	padding:15px 0 1px 0;
+	border-bottom-left-radius:7px;
+	border-bottom-right-radius:7px;
+}
+.ranking-team{
+	display:flex;
+	align-items:center;
+	justify-content: space-between;
+	margin:0 0 15px 40px;
+}
+.ranking-team-name{
+	//background-color:orange;
+	flex:0 0 50px;
+	font-weight:700;
+}
+.ranking-latest img{
+	margin-right:8px;
+}
+.ranking-gbo{
+	font-size:12px;
+	margin-right:30px;
 }
