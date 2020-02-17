@@ -19,26 +19,22 @@
 }
 .fixture{
 	background-color:white;
-	border:1px solid #E9E9E9;
+	border:1px solid #E3E3E3;
 	position:relative;
 	text-align:center;
 	margin-top:-1px;
+	padding:18px 0 18px 0;
 	width:570px; // To be removed when layout in place
 }
 .fixture:hover{
-	//background-color:#F7FBFA;
+	background-color:#F7FBFA;
+	cursor:pointer;
 }
 .fixture-topline{
 	//background-color:orange;
 	display:flex;
 	align-items:center;
 	justify-content: space-between;
-}
-.topline-padding-completed{
-	padding:18px 0 0 0;
-}
-.topline-padding-incompleted{
-	padding:20px 0 20px 0;
 }
 .fixture-topline-home{
 	//background-color:red;
@@ -91,10 +87,18 @@
 	display:flex;
 	justify-content: space-between;
 	//background-color:pink;
-	padding:13px 0 17px 0;
 	color:#5A5A5A;
 	font-weight:700;
 	font-size:12px;
+	padding-top:13px;
+}
+.fixture-bottomline ul{
+	list-style:none;
+	padding:0;
+	margin:0;
+}
+.fixture-bottomline li{
+	padding:0;
 }
 .home-proba{
 	flex:1 0 auto;
@@ -105,6 +109,19 @@
 	flex:1 0 auto;
 	text-align:left;
 	padding-left:30px;
+}
+.events {
+	flex:1 0 278px;
+	color:#BEBEBE;
+	font-weight:400;
+}
+.home-events{
+	text-align:right;
+	padding-right:7px;
+}
+.away-events{
+	text-align:left;
+	padding-left:7px;
 }
 .fixture-button{
 	text-decoration:none;
@@ -121,10 +138,10 @@
 	cursor:pointer;
 }
 .bookmark{
-	top:7px;
-	right:7px;
+	top:6px;
+	right:3px;
 }
 .share{
-	bottom:7px;
-	right:7px;
+	bottom:6px;
+	right:3px;
 }

@@ -19,8 +19,7 @@
 
 			<% if game[1][:status] == "completed" %>
 
-
-				<div class="fixture-topline topline-padding-incompleted">
+				<div class="fixture-topline">
 					<div class="fixture-topline-home">
 						<div class="rank">&nbsp;</div>
 						<div class="team home" style="color:#<%=game[1][:homecolor]%>;">
@@ -38,22 +37,33 @@
 					</div>
 				</div>
 
-				<!--
-				<% game[1][:hometeamevents].each do |event| %>
-					<br>
-					<small style="color:#9B9B9B"><%= event.player.last_name %>
-					<%= event.minute %>' </small>
-				<% end %>
+				<% if !game[1][:hometeamevents].length.zero? or !game[1][:awayteamevents].length.zero? %>
 
-				<% game[1][:awayteamevents].each do |event| %>
-					<br>
-					<small style="color:#9B9B9B"><%= event.minute %>' 
-					<%= event.player.last_name %></small>
+				<div class="fixture-bottomline">
+					<div class="events home-events">
+
+						<ul>
+							<% game[1][:hometeamevents].each do |event| %>
+								<li><%= event.player.last_name %> <%= event.minute %>'</li>
+							<% end %>
+						</ul>
+						
+					</div>
+					<div class="events away-events">
+
+						<ul>
+							<% game[1][:awayteamevents].each do |event| %>
+								<li><%= event.minute %>' <%= event.player.last_name %></li>
+							<% end %>
+						</ul>
+						
+					</div>
+				</div>
+
 				<% end %>
-				-->
 
 			<% else %>
-				<div class="fixture-topline topline-padding-completed">
+				<div class="fixture-topline">
 					<div class="fixture-topline-home">
 						<div class="rank">&nbsp;</div>
 						<div class="team home" style="color:#<%=game[1][:homecolor]%>;">
@@ -93,11 +103,9 @@
 
 			</div> <!-- Fixture -->
 
-
 		<% end %>
 
 	<% end %>
-
 
 </center>
 
