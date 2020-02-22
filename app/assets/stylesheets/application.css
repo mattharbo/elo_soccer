@@ -23,3 +23,6 @@ body{
 	font-size: 14px;
 	margin:0;
 }
+.rightcontent{
+	flex:0 0 600px;
+}

@@ -1,31 +1,35 @@
-<center>
-	<h1>
-		<%= @fixture.home_team.name %>
+<div class="rightcontent">
 
-		<% unless @fixture.scorehome.nil? %>
-			<%= @fixture.scorehome %>
-		<% end %>
+	<center>
+		<h1>
+			<%= @fixture.home_team.name %>
 
-		-
+			<% unless @fixture.scorehome.nil? %>
+				<%= @fixture.scorehome %>
+			<% end %>
 
-		<% unless @fixture.scoreaway.nil? %>
-			<%= @fixture.scoreaway %>
-		<% end %>
+			-
 
-		<%= @fixture.away_team.name %>
-	</h1>
-Stage <%= @fixture.stage %>
-<br>
-Played on 
-<%= @fixture.date %> at <%= @fixture.time.strftime("%H:%M") %>
-</center>
+			<% unless @fixture.scoreaway.nil? %>
+				<%= @fixture.scoreaway %>
+			<% end %>
 
-<% @fixtureevents.each do |event| %>
-
-	 <%= event.player.first_name %>
-	 <b><%= event.player.last_name %></b>
-	 (<%= event.team.acronym %>)
-	 <%= event.minute %>'
+			<%= @fixture.away_team.name %>
+		</h1>
+	Stage <%= @fixture.stage %>
 	<br>
+	Played on 
+	<%= @fixture.date %> at <%= @fixture.time.strftime("%H:%M") %>
+	</center>
 
-<% end %>
+	<% @fixtureevents.each do |event| %>
+
+		 <%= event.player.first_name %>
+		 <b><%= event.player.last_name %></b>
+		 (<%= event.team.acronym %>)
+		 <%= event.minute %>'
+		<br>
+
+	<% end %>
+
+</div>

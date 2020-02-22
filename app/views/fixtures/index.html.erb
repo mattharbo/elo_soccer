@@ -1,39 +1,43 @@
-<h3>Fixtures</h3>
+<div class="rightcontent">
 
-<%= link_to "Create a new game", new_fixture_path %>
-<br><br>
+	<h3>Fixtures</h3>
 
-<% @fixtures.each do |fixture| %>
+	<%= link_to "Create a new game", new_fixture_path %>
+	<br><br>
 
-	<% if fixture.status.eql? 'played' %>
+	<% @fixtures.each do |fixture| %>
 
-		<% if fixture.completed.nil? %>
-			&#x26D4 <!-- Forbidden icon -->
+		<% if fixture.status.eql? 'played' %>
+
+			<% if fixture.completed.nil? %>
+				&#x26D4 <!-- Forbidden icon -->
+			<% else %>
+				&#x2705 <!-- Checked icon -->
+			<% end %>
+
+			<%= fixture.date %> • Stage <%= fixture.stage %> | 
+				<%= link_to fixture_path(fixture.id), {class: "classname"} do%>
+					<%= fixture.home_team.name %>
+					<b><%= fixture.scorehome %>-<%= fixture.scoreaway %></b>
+					<%= fixture.away_team.name %> 
+				<%end%>
+			<br>
+
 		<% else %>
-			&#x2705 <!-- Checked icon -->
-		<% end %>
+		
+			&#x1F5D3 <!-- Calendar icon -->
 
-		<%= fixture.date %> • Stage <%= fixture.stage %> | 
+			<%= fixture.date %> at <%= fixture.time.strftime("%H:%M") %>
+			• Stage <%= fixture.stage %> | 
 			<%= link_to fixture_path(fixture.id), {class: "classname"} do%>
 				<%= fixture.home_team.name %>
-				<b><%= fixture.scorehome %>-<%= fixture.scoreaway %></b>
+				 vs.
 				<%= fixture.away_team.name %> 
 			<%end%>
-		<br>
+			<br>
 
-	<% else %>
-	
-		&#x1F5D3 <!-- Calendar icon -->
-
-		<%= fixture.date %> at <%= fixture.time.strftime("%H:%M") %>
-		• Stage <%= fixture.stage %> | 
-		<%= link_to fixture_path(fixture.id), {class: "classname"} do%>
-			<%= fixture.home_team.name %>
-			 vs.
-			<%= fixture.away_team.name %> 
-		<%end%>
-		<br>
-
+		<% end %>
+		
 	<% end %>
-	
-<% end %>
+
+</div>

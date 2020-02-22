@@ -1,10 +1,14 @@
-<h3>Players</h3>
+<div class="rightcontent">
 
-<% @players.each do |player| %>
-	<%= player.first_name %>
-	<b>
-		<%= player.last_name %>
-	</b>
-	 (<%= player.nationality %>)
-	 - <%= player.team.acronym %><br>
-<% end %>
+	<h3>Players</h3>
+
+	<% @players.each do |player| %>
+		<%= player.first_name %>
+		<b>
+			<%= player.last_name %>
+		</b>
+		 (<%= player.nationality %>)
+		 - <%= player.team.acronym %><br>
+	<% end %>
+
+</div>

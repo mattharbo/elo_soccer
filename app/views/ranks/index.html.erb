@@ -1,18 +1,22 @@
-<h3>Ranking</h3>
+<div class="rightcontent">
 
-<% unless @theranking.empty? %>
-	<% for i in @theranking do %>
-		<%= i[0] %>
-		<small>(<%= i[1] %>)</small>
+	<h3>Ranking</h3>
+
+	<% unless @theranking.empty? %>
+		<% for i in @theranking do %>
+			<%= i[0] %>
+			<small>(<%= i[1] %>)</small>
+			<br>
+		<% end %>
+
 		<br>
+		-------------------------
+		<br>
+		<% @ranks.each do |rank| %>
+			<%= rank.team.city %>
+			<%= rank.level %>
+			<br>
+		<% end %>
 	<% end %>
 
-	<br>
-	-------------------------
-	<br>
-	<% @ranks.each do |rank| %>
-		<%= rank.team.city %>
-		<%= rank.level %>
-		<br>
-	<% end %>
-<% end %>
+</div>

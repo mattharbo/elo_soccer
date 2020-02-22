@@ -1,18 +1,18 @@
-<h3>Teams</h3> 
+<div class="rightcontent">
 
+	<h3>Teamss</h3> 
 
-
-
-
-<% @teams.each do | team | %>
-	<%= link_to team_path(team.id), {class: "classname"} do %>
-		<b><%= team.name %></b> 
+	<% @teams.each do | team | %>
+		<%= link_to team_path(team.id), {class: "classname"} do %>
+			<b><%= team.name %></b> 
+		<% end %>
+		(<%= team.acronym %>) | 
+		<%= team.city %>
+		 - 
+		<%= team.light_color %><br>
 	<% end %>
-	(<%= team.acronym %>) | 
-	<%= team.city %>
-	 - 
-	<%= team.light_color %><br>
-<% end %>
 
-<br>
-<%= link_to "Add a new team", new_team_path%>
+	<br>
+	<%= link_to "Add a new team", new_team_path%>
+
+</div>

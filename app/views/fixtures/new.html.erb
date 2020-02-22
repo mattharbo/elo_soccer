@@ -1,34 +1,38 @@
-<h3>Create a new game:</h3>
+<div class="rightcontent">
 
-<%= form_for @fixture do |f| %>
+	<h3>Create a new game:</h3>
 
-	<%= f.label :date, "Date of the game"%>
-	<%= f.date_field :date, value:Date.today %>
+	<%= form_for @fixture do |f| %>
+
+		<%= f.label :date, "Date of the game"%>
+		<%= f.date_field :date, value:Date.today %>
+		<br>
+
+		<%= f.label :time, "Time of the game"%>
+		<%= f.time_field :time, value: "21:00" %>
+		<br>
+		<%= f.label :stage, "Stage"%>
+		<%= select_tag(:stage, options_for_select(@stages)) %>
+		<br>
+
+		<%= f.label :home_team, "Home team"%>
+		<%= select_tag(:home_team, options_for_select(@teams)) %>
+
+		<%= f.label :away_team, "Away team"%>
+		<%= select_tag(:away_team, options_for_select(@teams)) %>
+		
+		<br>
+
+		<br>
+		<%= f.submit "Create game"%>
+
+	<% end %>
+
 	<br>
+	<%= link_to "Dismiss", fixtures_path %>
 
-	<%= f.label :time, "Time of the game"%>
-	<%= f.time_field :time, value: "21:00" %>
-	<br>
-	<%= f.label :stage, "Stage"%>
-	<%= select_tag(:stage, options_for_select(@stages)) %>
-	<br>
+	<!-- Set by default: -->
+	<!-- Status = scheduled -->
+	<!-- Completed = false  -->
 
-	<%= f.label :home_team, "Home team"%>
-	<%= select_tag(:home_team, options_for_select(@teams)) %>
-
-	<%= f.label :away_team, "Away team"%>
-	<%= select_tag(:away_team, options_for_select(@teams)) %>
-	
-	<br>
-
-	<br>
-	<%= f.submit "Create game"%>
-
-<% end %>
-
-<br>
-<%= link_to "Dismiss", fixtures_path %>
-
-<!-- Set by default: -->
-<!-- Status = scheduled -->
-<!-- Completed = false  -->
+</div>
