@@ -63,29 +63,32 @@
 
 .journey{
 	background-color:white;
-	border:1px solid #E9E9E9;
+	padding-top:1px;
+	//border:1px solid #e3e3e3a1;
 	text-align:left;
 	height:48px;
-	margin-top:-1px;// Temporary solution
 	width:570px; // To be removed when layout in place
 }
 .journey h2{
 	font-size:14px;
 	font-weight:700;
 	margin: 15px 0 0 32px;
-	//color:#05DFAA;
+	color:#05DFAA;
 }
 .fixture{
-	background-color:white;
-	border:1px solid #E3E3E3;
+	background-color:#fbfbfb;
+	border-radius:3px;
+	margin-bottom: 10px;
+
+	//border:1px solid #e3e3e3a1;
 	position:relative;
 	text-align:center;
-	margin-top:-1px;
+	//margin-top:-1px;
 	padding:18px 0 18px 0;
 	width:570px; // To be removed when layout in place
 }
 .fixture:hover{
-	background-color:#F7FBFA;
+	background-color:#f5fffc;
 	cursor:pointer;
 }
 .fixture-topline{
@@ -198,11 +201,11 @@
 }
 .bookmark{
 	top:6px;
-	right:3px;
+	right:5px;
 }
 .share{
 	bottom:6px;
-	right:3px;
+	right:5px;
 }
 
 // #######################
@@ -214,10 +217,10 @@
 }
 .ranking-head{
 	position:relative;
-	background-color:#F7FBFA;
+	background-color:#fbfbfb;
 	text-align:left;
 	height:40px;
-	border-bottom:1px solid #D8D8D8;
+	border-bottom:1px solid #e3e3e3a1;
 	border-top-left-radius:7px;
 	border-top-right-radius:7px;
 }
@@ -228,7 +231,7 @@
 	margin:12px 0 0 20px;
 }
 .ranking-container{
-	background-color:#F7FBFA;
+	background-color:#fbfbfb;
 	padding:15px 0 1px 0;
 	border-bottom-left-radius:7px;
 	border-bottom-right-radius:7px;
