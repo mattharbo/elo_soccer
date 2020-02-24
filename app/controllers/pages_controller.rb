@@ -59,7 +59,7 @@ class PagesController < ApplicationController
 			tempteam << theteam.team.acronym
 			tempteam << theteam.level
 
-			gameserie = Fixture.where(home_team:targetteam).or(Fixture.where(away_team:targetteam)).limit(5).reverse
+			gameserie = Fixture.where(home_team:targetteam).or(Fixture.where(away_team:targetteam)).last(5).reverse
 
 			gameserie.each do |lastgame|
 				if lastgame.home_team==targetteam
@@ -74,14 +74,14 @@ class PagesController < ApplicationController
 					end
 				else
 					tempteam << "nope"
-					# case 
-					# when (lastgame.scorehome-lastgame.scoreaway) < 0
-					# 	tempteam << "win"
-					# when (lastgame.scorehome-lastgame.scoreaway) > 0
-					# 	tempteam << "lost"
-					# when (lastgame.scorehome-lastgame.scoreaway) == 0
-					# 	tempteam << "draw"
-					# end
+					case 
+					when (lastgame.scorehome.to_i-lastgame.scoreaway.to_i) < 0
+						tempteam << "win"
+					when (lastgame.scorehome.to_i-lastgame.scoreaway.to_i) > 0
+						tempteam << "lost"
+					when (lastgame.scorehome.to_i-lastgame.scoreaway.to_i) == 0
+						tempteam << "draw"
+					end
 				end
 			end
 			
