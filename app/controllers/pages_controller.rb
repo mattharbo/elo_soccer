@@ -55,11 +55,39 @@ class PagesController < ApplicationController
 		teams.each do |targetteam|
 			tempteam = []
 			theteam = Rank.where(team:targetteam).last
+
 			tempteam << theteam.team.acronym
 			tempteam << theteam.level
+
+			gameserie = Fixture.where(home_team:targetteam).or(Fixture.where(away_team:targetteam)).limit(5).reverse
+
+			gameserie.each do |lastgame|
+				if lastgame.home_team==targetteam
+					case 
+					when (lastgame.scorehome - lastgame.scoreaway) < 0
+						tempteam << "lost"
+					when (lastgame.scorehome - lastgame.scoreaway) > 0
+						tempteam << "win"
+					when (lastgame.scorehome - lastgame.scoreaway) == 0
+						tempteam << "draw"
+					end
+				else
+					case 
+					when (lastgame.scorehome - lastgame.scoreaway) < 0
+						tempteam << "win"
+					when (lastgame.scorehome - lastgame.scoreaway) > 0
+						tempteam << "lost"
+					when (lastgame.scorehome - lastgame.scoreaway) == 0
+						tempteam << "draw"
+					end
+				end
+			end
+			
 			ranking << tempteam
 		end
+
 		@theranking = ranking.sort { |a,b| b[1] <=> a[1] }
+
 	end
 
 	####################
