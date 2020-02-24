@@ -64,16 +64,16 @@ class PagesController < ApplicationController
 			gameserie.each do |lastgame|
 				if lastgame.home_team==targetteam
 					tempteam << "win"
-					# case 
-					# when (lastgame.scorehome-lastgame.scoreaway) < 0
-					# 	tempteam << "lost"
-					# when (lastgame.scorehome-lastgame.scoreaway) > 0
-					# 	tempteam << "win"
-					# when (lastgame.scorehome-lastgame.scoreaway) == 0
-					# 	tempteam << "draw"
-					# end
+					case 
+					when (lastgame.scorehome.to_i-lastgame.scoreaway.to_i) < 0
+						tempteam << "lost"
+					when (lastgame.scorehome.to_i-lastgame.scoreaway.to_i) > 0
+						tempteam << "win"
+					when (lastgame.scorehome.to_i-lastgame.scoreaway.to_i) == 0
+						tempteam << "draw"
+					end
 				else
-					tempteam << "lost"
+					tempteam << "nope"
 					# case 
 					# when (lastgame.scorehome-lastgame.scoreaway) < 0
 					# 	tempteam << "win"
