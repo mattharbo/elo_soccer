@@ -61,27 +61,27 @@ class PagesController < ApplicationController
 
 			gameserie = Fixture.where(home_team:targetteam).or(Fixture.where(away_team:targetteam)).limit(5).reverse
 
-			# gameserie.each do |lastgame|
-			# 	if lastgame.home_team==targetteam
-			# 		case 
-			# 		when (lastgame.scorehome-lastgame.scoreaway) < 0
-			# 			tempteam << "lost"
-			# 		when (lastgame.scorehome-lastgame.scoreaway) > 0
-			# 			tempteam << "win"
-			# 		when (lastgame.scorehome-lastgame.scoreaway) == 0
-			# 			tempteam << "draw"
-			# 		end
-			# 	else
-			# 		case 
-			# 		when (lastgame.scorehome-lastgame.scoreaway) < 0
-			# 			tempteam << "win"
-			# 		when (lastgame.scorehome-lastgame.scoreaway) > 0
-			# 			tempteam << "lost"
-			# 		when (lastgame.scorehome-lastgame.scoreaway) == 0
-			# 			tempteam << "draw"
-			# 		end
-			# 	end
-			# end
+			gameserie.each do |lastgame|
+				if lastgame.home_team==targetteam
+					case 
+					when (lastgame.scorehome-lastgame.scoreaway) < 0
+						tempteam << "lost"
+					when (lastgame.scorehome-lastgame.scoreaway) > 0
+						tempteam << "win"
+					when (lastgame.scorehome-lastgame.scoreaway) == 0
+						tempteam << "draw"
+					end
+				else
+					case 
+					when (lastgame.scorehome-lastgame.scoreaway) < 0
+						tempteam << "win"
+					when (lastgame.scorehome-lastgame.scoreaway) > 0
+						tempteam << "lost"
+					when (lastgame.scorehome-lastgame.scoreaway) == 0
+						tempteam << "draw"
+					end
+				end
+			end
 			
 			ranking << tempteam
 		end
