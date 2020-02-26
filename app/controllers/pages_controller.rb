@@ -59,11 +59,12 @@ class PagesController < ApplicationController
 			tempteam << theteam.team.acronym
 			tempteam << theteam.level
 
-			gameserie = Fixture.where(home_team:targetteam).or(Fixture.where(away_team:targetteam)).last(5).reverse
+			# gameserie = Fixture.where(home_team:targetteam).or(Fixture.where(away_team:targetteam)).last(5).reverse
+			gameserie = Fixture.where("status = ? and home_team_id = ?", "played", targetteam).or(Fixture.where("status = ? and away_team_id = ?", "played", targetteam)).last(5).reverse
 
 			gameserie.each do |lastgame|
 				if lastgame.home_team==targetteam
-					tempteam << "win"
+					# tempteam << "win"
 					case 
 					when (lastgame.scorehome.to_i-lastgame.scoreaway.to_i) < 0
 						tempteam << "lost"
@@ -73,7 +74,7 @@ class PagesController < ApplicationController
 						tempteam << "draw"
 					end
 				else
-					tempteam << "nope"
+					# tempteam << "nope"
 					case 
 					when (lastgame.scorehome.to_i-lastgame.scoreaway.to_i) < 0
 						tempteam << "win"

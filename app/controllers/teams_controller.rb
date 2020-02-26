@@ -16,6 +16,8 @@ class TeamsController < ApplicationController
 		@team = Team.find(params[:id])
 
 		@teamplayers = Player.where(team:params[:id])
+
+		@gameserie = Fixture.where("status = ? and home_team_id = ?", "played", @team).or(Fixture.where("status = ? and away_team_id = ?", "played", @team)).reverse
 	end
 
 	####################
